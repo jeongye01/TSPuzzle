@@ -1,0 +1,21 @@
+{
+  "name": "ts-block-puzzle",
+  "version": "1.0.0",
+  "description": "no library, 타입스크립트로만 만든 웹게임",
+  "main": "./src/index.tsx",
+  "scripts": {
+    "start": "start",
+    "build": "build",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeongye01/TSPuzzle.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jeongye01/TSPuzzle/issues"
+  },
+  "homepage": "https://github.com/jeongye01/TSPuzzle#readme"
+}
