@@ -17,5 +17,9 @@
   "bugs": {
     "url": "https://github.com/jeongye01/TSPuzzle/issues"
   },
-  "homepage": "https://github.com/jeongye01/TSPuzzle#readme"
+  "homepage": "https://github.com/jeongye01/TSPuzzle#readme",
+  "devDependencies": {
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
+  }
 }
