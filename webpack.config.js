@@ -2,6 +2,7 @@ const path = require('path');
 const MiniCssExtractPlugin=require("mini-css-extract-plugin");
 
 module.exports = {
+  mode:'none',
   entry: './src/index.ts',
   module: {
     rules: [
@@ -28,5 +29,7 @@ module.exports = {
   ],
   devServer:{
     hot:true
-  }
+  },
+ 
+
 };
