@@ -42,7 +42,9 @@ module.exports = {
     new HtmlWebpackPlugin({template:'./public/index.html',filename:'./index.html'})
   ],
   devServer:{
-    hot:true
+    hot:true, //변경 시 reload
+    host: "localhost", // live-server host 및 port,
+    port:3000
   },
  
 

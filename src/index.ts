@@ -2,7 +2,7 @@ import  './styles/style.css';
 function component() {
     const element = document.createElement('div');
 
-    element.innerHTML ="hello";
+    element.innerHTML ="hello webpack";
 
     return element;
   }
