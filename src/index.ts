@@ -1,11 +1,22 @@
 import  './styles/style.css';
-function component() {
-    const element = document.createElement('div');
 
-    element.innerHTML ="hello webpack";
 
-    return element;
-  }
+function Home(){
+  const root=document.getElementById('root')  as HTMLElement;
+  
+  const container=document.createElement('div');
+  container.setAttribute('class','container-bg');
 
-  document.body.appendChild(component());
+  root.appendChild(container);
+}
+
+
+
+
+Home();
+
+
+
+
+
   

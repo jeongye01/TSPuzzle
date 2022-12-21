@@ -1,9 +1,29 @@
 @import "reset.css";
 
+:root {
+    --main-color: red;
+    --board-innerBg: #0D1A48;
+    --board-outerBg:#203F82;
+    --red:#ED1A25;
+    --orange:#1E2462;
+   
+}
+
 html,
 body {
     font-family: 'Noto Sans KR', sans-serif;
 }
 * {
     box-sizing: border-box;
+}
+
+.container-bg{
+    background-color: var(--board-innerBg);
+    max-width: 530px;
+    max-height: 700px;
+    margin:auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 100vw;
+    height: 100vh;
 }
