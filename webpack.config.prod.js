@@ -1,4 +1,5 @@
 const path = require('path');
+const HtmlWebpackPlugin=require('html-webpack-plugin');
 const MiniCssExtractPlugin=require("mini-css-extract-plugin");
 
 module.exports = {
@@ -7,13 +8,25 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.tsx$/,
-        use: 'ts-loader',
-        exclude: /node_modules/,
+        test: /[\.js]$/, // .js 에 한하여 babel-loader를 이용하여 transpiling
+        exclude: /node_module/,
+        use: {
+          loader: "babel-loader",
+        },
+      },
+      {
+        test: /\.ts$/, // .ts 에 한하여 ts-loader를 이용하여 transpiling
+        exclude: /node_module/,
+        use: {
+          loader: "ts-loader",
+        },
       },
       {
         test: /\.css$/,
-        use: 'css-loader'
+        use: [
+          'style-loader',
+          'css-loader'
+        ]
       },
     ],
   },
@@ -21,14 +34,17 @@ module.exports = {
     extensions: ['.tsx', '.ts', '.js'],
   },
   output: {
-    filename: '[chunkhash].bundle.js',
+    filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
   },
   plugins:[
-    new MiniCssExtractPlugin()
+    new MiniCssExtractPlugin(),
+    new HtmlWebpackPlugin({template:'./public/index.html',filename:'./index.html'})
   ],
   devServer:{
-    hot:true
+    hot:true, //변경 시 reload
+    host: "localhost", // live-server host 및 port,
+    port:3000
   },
  
 
