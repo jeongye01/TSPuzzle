@@ -17,7 +17,7 @@ body {
     box-sizing: border-box;
 }
 
-.container-bg{
+.container{
     background-color: var(--board-innerBg);
     max-width: 530px;
     max-height: 700px;
@@ -26,4 +26,15 @@ body {
     margin-bottom: auto;
     width: 100vw;
     height: 100vh;
+}
+.row-container{
+  
+    display: flex;
+}
+.tile {
+    background-color: var(--board-innerBg);
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    border: 0.5px solid white;
 }
