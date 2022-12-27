@@ -2,17 +2,30 @@ import  './styles/style.css';
 const root=document.getElementById('root')  as HTMLElement;
 
 let diffX=0,diffY=0;
+const boardState = Array.from(Array(10), () => Array(10).fill(0));
 const board=document.createElement('div');
 function Board (){
   const onDrop=(e)=>{
     e.stopPropagation();
-
+   // main block 좌표
     const mainX=e.x-diffX;
     const mainY=e.y+diffY;
+    const x=Math.trunc(mainX/40);
+    const y=Math.trunc(mainY/40);
+   // main block 좌표가 속해있는 board 좌표
+   console.log(e.target.dataset);
     
-    console.log(mainX,e.x,mainY,e.y);
-    e.target.classList.remove('tile-over')
-    e.target.classList.toggle('tile-filled')
+    console.log(Math.trunc(mainX/40),Math.trunc(mainY/40));
+    if(y-1<0 || y+1>9)return;
+    if(boardState[x][y] || boardState[x][y-1] || boardState[x][y+1]) return;
+  
+    boardState[x][y]= boardState[x][y-1]=boardState[x][y+1]=1;
+    document.getElementById(`${x}+${y}`).classList.add('tile-filled');
+    document.getElementById(`${x}+${y-1}`).classList.add('tile-filled');
+    document.getElementById(`${x}+${y+1}`).classList.add('tile-filled');
+    document.getElementById(`${x}+${y}`).classList.remove('tile-over');
+    document.getElementById(`${x}+${y-1}`).classList.remove('tile-over');
+    document.getElementById(`${x}+${y+1}`).classList.remove('tile-over');
  }
  const onDragOver=(e)=>{
  e.preventDefault();
@@ -31,10 +44,11 @@ const onDragLeave=(e)=>{
    [1,1,1,1,1,1,1,1,1,1].forEach((_,col)=>{
    
      const tile=document.createElement('div');
-   
      tile.setAttribute('class','tile');
-     tile.dataset.x=col+'';
-     tile.dataset.y=row+'';
+     if(boardState[col][row]){
+      tile.classList.add('tile-filled')
+     }
+     tile.id=`${col}+${row}`;
      tile.addEventListener("dragover",onDragOver);
      tile.addEventListener( "dragleave",onDragLeave);
      tile.addEventListener("drop",onDrop);
