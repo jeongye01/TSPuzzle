@@ -1,20 +1,28 @@
 import  './styles/style.css';
 const root=document.getElementById('root')  as HTMLElement;
 
+
+const board=document.createElement('div');
 function Board (){
   const onDrop=(e)=>{
-    console.log(e.target.dataset);
+    e.stopPropagation();
+    console.log(e.target);
+    const mainTile=document.getElementById('tile1-1');
+    const rect=mainTile.getBoundingClientRect();
+    console.log(e,"board");
     e.target.classList.remove('tile-over')
     e.target.classList.toggle('tile-filled')
  }
  const onDragOver=(e)=>{
  e.preventDefault();
+ 
  e.target.classList.add('tile-over')
 }
 const onDragLeave=(e)=>{
   e.preventDefault();
   e.target.classList.remove('tile-over')
  }
+
  // 10*10 크기의 보드생성
  [1,1,1,1,1,1,1,1,1,1].forEach((_,row)=>{
    const rowContainer=document.createElement('div');
@@ -33,10 +41,13 @@ const onDragLeave=(e)=>{
      rowContainer.appendChild(tile);
  
    });
-   root.appendChild(rowContainer);
+   board.appendChild(rowContainer);
+   
  });
+
+ root.appendChild(board);
 }
-function BlockTile (block:HTMLDivElement){
+function BlockTile (block:HTMLDivElement,x:number,y:number){
  
   const tile=document.createElement('div');
  
@@ -44,25 +55,41 @@ function BlockTile (block:HTMLDivElement){
 
 
    tile.setAttribute('class','tile');  
-  // tile.draggable=true
-  //  tile.addEventListener('drag',onDrag);
-  
+   if(x===0 && y===0){
+    tile.setAttribute('id',`tile1-1`);
+    
+   }
+   
    block.appendChild(tile);
 
 }
 function Block (){
-  const onDrag=(e)=>{
-    e.preventDefault();
-    console.log("block  drag",e.offsetY);
-  }
- const block=document.createElement('div');
  
- BlockTile(block); 
- BlockTile(block);
- BlockTile(block);
- block.draggable=true;
- block.addEventListener("dragend",onDrag);
+ const block=document.createElement('div');
 
+ 
+ const onDragStart=(e)=>{
+  const mainTile=document.getElementById('tile1-1');
+  const rect=mainTile.getBoundingClientRect();
+  const bodyRect=document.body.getBoundingClientRect();
+  const offsetTop=rect.top-bodyRect.top;
+  const offsetLeft=rect.left-bodyRect.left;
+  // main block 좌표와 마우스 좌표 차이 계산
+  
+  console.log(mainTile,offsetLeft+20,offsetTop,e.x,e.y);
+  console.log("drag start");
+}
+const onDragEnd=(e)=>{
+  console.log(e,"block");
+  console.log(e.target.children[0].style.x)
+}
+ BlockTile(block,-1,0); 
+ BlockTile(block,0,0);
+ BlockTile(block,1,0);
+ block.draggable=true;
+ block.addEventListener("dragstart" ,onDragStart);
+ block.addEventListener("dragend",onDragEnd);
+// block.setAttribute('class','block')
 root.appendChild(block);
 
 }
