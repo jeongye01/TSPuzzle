@@ -1,15 +1,16 @@
 import  './styles/style.css';
 const root=document.getElementById('root')  as HTMLElement;
 
-
+let diffX=0,diffY=0;
 const board=document.createElement('div');
 function Board (){
   const onDrop=(e)=>{
     e.stopPropagation();
-    console.log(e.target);
-    const mainTile=document.getElementById('tile1-1');
-    const rect=mainTile.getBoundingClientRect();
-    console.log(e,"board");
+
+    const mainX=e.x-diffX;
+    const mainY=e.y+diffY;
+    
+    console.log(mainX,e.x,mainY,e.y);
     e.target.classList.remove('tile-over')
     e.target.classList.toggle('tile-filled')
  }
@@ -69,14 +70,13 @@ function Block (){
 
  
  const onDragStart=(e)=>{
-  const mainTile=document.getElementById('tile1-1');
-  const rect=mainTile.getBoundingClientRect();
-  const bodyRect=document.body.getBoundingClientRect();
-  const offsetTop=rect.top-bodyRect.top;
-  const offsetLeft=rect.left-bodyRect.left;
-  // main block 좌표와 마우스 좌표 차이 계산
   
-  console.log(mainTile,offsetLeft+20,offsetTop,e.x,e.y);
+  
+  // main block 좌표와 마우스 좌표 차이 계산
+  diffX=Math.abs(e.offsetX-20);
+  diffY=Math.abs(e.offsetY-60);
+  
+  
   console.log("drag start");
 }
 const onDragEnd=(e)=>{
