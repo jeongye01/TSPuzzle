@@ -13,9 +13,9 @@ function Board (){
     const x=Math.trunc(mainX/40);
     const y=Math.trunc(mainY/40);
    // main block 좌표가 속해있는 board 좌표
-   console.log(e.target.dataset);
+  // console.log(e.target.dataset);
     
-    console.log(Math.trunc(mainX/40),Math.trunc(mainY/40));
+   // console.log(Math.trunc(mainX/40),Math.trunc(mainY/40));
     if(y-1<0 || y+1>9)return;
     if(boardState[x][y] || boardState[x][y-1] || boardState[x][y+1]) return;
   
@@ -29,12 +29,32 @@ function Board (){
  }
  const onDragOver=(e)=>{
  e.preventDefault();
+ const allTileOver=document.querySelectorAll('.tile-over')
+ allTileOver.forEach((tileOver)=>{
+   tileOver.classList.remove('tile-over');
+ });
+ const mainX=e.x-diffX;
+ const mainY=e.y+diffY;
+ const x=Math.trunc(mainX/40);
+ const y=Math.trunc(mainY/40);
+// main block 좌표가 속해있는 board 좌표
+
  
- e.target.classList.add('tile-over')
+ // console.log(Math.trunc(mainX/40),Math.trunc(mainY/40));
+ if(y-1<0 || y+1>9)return;
+ if(boardState[x][y] || boardState[x][y-1] || boardState[x][y+1]) return;
+ console.log('over',e.target.dataset);
+ document.getElementById(`${x}+${y}`).classList.add('tile-over');
+ document.getElementById(`${x}+${y-1}`).classList.add('tile-over');
+ document.getElementById(`${x}+${y+1}`).classList.add('tile-over');
+
+
 }
 const onDragLeave=(e)=>{
   e.preventDefault();
-  e.target.classList.remove('tile-over')
+  console.log("leave",e.target.dataset)
+ 
+ 
  }
 
  // 10*10 크기의 보드생성
@@ -49,6 +69,8 @@ const onDragLeave=(e)=>{
       tile.classList.add('tile-filled')
      }
      tile.id=`${col}+${row}`;
+     tile.dataset.x=col+'';
+     tile.dataset.y=row+'';
      tile.addEventListener("dragover",onDragOver);
      tile.addEventListener( "dragleave",onDragLeave);
      tile.addEventListener("drop",onDrop);
@@ -91,18 +113,15 @@ function Block (){
   diffY=Math.abs(e.offsetY-60);
   
   
-  console.log("drag start");
+  // console.log("drag start");
 }
-const onDragEnd=(e)=>{
-  console.log(e,"block");
-  console.log(e.target.children[0].style.x)
-}
+
  BlockTile(block,-1,0); 
  BlockTile(block,0,0);
  BlockTile(block,1,0);
  block.draggable=true;
  block.addEventListener("dragstart" ,onDragStart);
- block.addEventListener("dragend",onDragEnd);
+
 // block.setAttribute('class','block')
 root.appendChild(block);
 
