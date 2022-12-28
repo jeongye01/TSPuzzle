@@ -1,8 +1,10 @@
+import Block1, { fillBlock1 } from './components/Blocks/Block1';
+import BlockTile from './components/BlockTile';
 import  './styles/style.css';
-const root=document.getElementById('root')  as HTMLElement;
+export const root=document.getElementById('root')  as HTMLElement;
 
 let diffX=0,diffY=0;
-const boardState = Array.from(Array(10), () => Array(10).fill(0));
+export const boardState = Array.from(Array(10), () => Array(10).fill(0));
 const board=document.createElement('div');
 function Board (){
   const onDrop=(e)=>{
@@ -12,20 +14,7 @@ function Board (){
     const mainY=e.y+diffY;
     const x=Math.trunc(mainX/40);
     const y=Math.trunc(mainY/40);
-   // main block 좌표가 속해있는 board 좌표
-  // console.log(e.target.dataset);
-    
-   // console.log(Math.trunc(mainX/40),Math.trunc(mainY/40));
-    if(y-1<0 || y+1>9)return;
-    if(boardState[x][y] || boardState[x][y-1] || boardState[x][y+1]) return;
-  
-    boardState[x][y]= boardState[x][y-1]=boardState[x][y+1]=1;
-    document.getElementById(`${x}+${y}`).classList.add('tile-filled');
-    document.getElementById(`${x}+${y-1}`).classList.add('tile-filled');
-    document.getElementById(`${x}+${y+1}`).classList.add('tile-filled');
-    document.getElementById(`${x}+${y}`).classList.remove('tile-over');
-    document.getElementById(`${x}+${y-1}`).classList.remove('tile-over');
-    document.getElementById(`${x}+${y+1}`).classList.remove('tile-over');
+   fillBlock1(x,y);
  }
  const onDragOver=(e)=>{
  e.preventDefault();
@@ -84,54 +73,41 @@ const onDragLeave=(e)=>{
 
  root.appendChild(board);
 }
-function BlockTile (block:HTMLDivElement,x:number,y:number){
+
+
+function Block2 (){
  
-  const tile=document.createElement('div');
+  const block=document.createElement('div');
  
   
-
-
-   tile.setAttribute('class','tile');  
-   if(x===0 && y===0){
-    tile.setAttribute('id',`tile1-1`);
-    
-   }
+  const onDragStart=(e)=>{
    
-   block.appendChild(tile);
-
-}
-function Block (){
+   
+   // main block 좌표와 마우스 좌표 차이 계산
+   diffX=Math.abs(e.offsetX-20);
+   diffY=Math.abs(e.offsetY-60);
+   
+   
+   // console.log("drag start");
+ }
  
- const block=document.createElement('div');
-
+  BlockTile(block,-1,0); 
+  BlockTile(block,0,0);
+  BlockTile(block,1,0);
+  block.draggable=true;
+  block.addEventListener("dragstart" ,onDragStart);
  
- const onDragStart=(e)=>{
-  
-  
-  // main block 좌표와 마우스 좌표 차이 계산
-  diffX=Math.abs(e.offsetX-20);
-  diffY=Math.abs(e.offsetY-60);
-  
-  
-  // console.log("drag start");
-}
-
- BlockTile(block,-1,0); 
- BlockTile(block,0,0);
- BlockTile(block,1,0);
- block.draggable=true;
- block.addEventListener("dragstart" ,onDragStart);
-
-// block.setAttribute('class','block')
-root.appendChild(block);
-
-}
+ // block.setAttribute('class','block')
+ root.appendChild(block);
+ 
+ }
 
 
 function render(){
  
   Board();
-  Block();
+  Block1(diffX,diffY);
+  Block2();
 
   
 }
