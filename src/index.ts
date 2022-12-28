@@ -1,6 +1,7 @@
 import Block1 from './components/Blocks/Block1';
 import { Block2 } from './components/Blocks/Block2';
 import { Block3 } from './components/Blocks/Block3';
+import { Block4 } from './components/Blocks/Block4';
 
 import  './styles/style.css';
 export const root=document.getElementById('root')  as HTMLElement;
@@ -92,6 +93,7 @@ function render(){
   Block1(diff.setter,blockInfo.setter);
   Block2(diff.setter,blockInfo.setter);
   Block3(diff.setter,blockInfo.setter);
+  Block4(diff.setter,blockInfo.setter);
 
   
 }
