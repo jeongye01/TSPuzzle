@@ -1,17 +1,25 @@
-import Block1, { fillBlock1 } from './components/Blocks/Block1';
+import Block1, { fillBlock1, overBlock1 } from './components/Blocks/Block1';
+import { Block2 } from './components/Blocks/Block2';
 import BlockTile from './components/BlockTile';
 import  './styles/style.css';
 export const root=document.getElementById('root')  as HTMLElement;
-
-let diffX=0,diffY=0;
+export const diff={
+  x:0,
+  y:0,
+  setter:function(diffX:number,diffY:number){
+    console.log(diffX,diffY,"qwer");
+    this.x=diffX;
+    this.y=diffY;
+  }
+}
 export const boardState = Array.from(Array(10), () => Array(10).fill(0));
 const board=document.createElement('div');
 function Board (){
   const onDrop=(e)=>{
     e.stopPropagation();
    // main block 좌표
-    const mainX=e.x-diffX;
-    const mainY=e.y+diffY;
+    const mainX= e.x-diff.x;
+    const mainY=e.y-diff.y;
     const x=Math.trunc(mainX/40);
     const y=Math.trunc(mainY/40);
    fillBlock1(x,y);
@@ -22,29 +30,20 @@ function Board (){
  allTileOver.forEach((tileOver)=>{
    tileOver.classList.remove('tile-over');
  });
- const mainX=e.x-diffX;
- const mainY=e.y+diffY;
+ const mainX=e.x-diff.x;
+ const mainY=e.y-diff.y;
  const x=Math.trunc(mainX/40);
  const y=Math.trunc(mainY/40);
+ 
 // main block 좌표가 속해있는 board 좌표
 
+overBlock1(x,y);
+
  
- // console.log(Math.trunc(mainX/40),Math.trunc(mainY/40));
- if(y-1<0 || y+1>9)return;
- if(boardState[x][y] || boardState[x][y-1] || boardState[x][y+1]) return;
- console.log('over',e.target.dataset);
- document.getElementById(`${x}+${y}`).classList.add('tile-over');
- document.getElementById(`${x}+${y-1}`).classList.add('tile-over');
- document.getElementById(`${x}+${y+1}`).classList.add('tile-over');
 
 
 }
-const onDragLeave=(e)=>{
-  e.preventDefault();
-  console.log("leave",e.target.dataset)
- 
- 
- }
+
 
  // 10*10 크기의 보드생성
  [1,1,1,1,1,1,1,1,1,1].forEach((_,row)=>{
@@ -61,7 +60,6 @@ const onDragLeave=(e)=>{
      tile.dataset.x=col+'';
      tile.dataset.y=row+'';
      tile.addEventListener("dragover",onDragOver);
-     tile.addEventListener( "dragleave",onDragLeave);
      tile.addEventListener("drop",onDrop);
 
      rowContainer.appendChild(tile);
@@ -75,39 +73,13 @@ const onDragLeave=(e)=>{
 }
 
 
-function Block2 (){
- 
-  const block=document.createElement('div');
- 
-  
-  const onDragStart=(e)=>{
-   
-   
-   // main block 좌표와 마우스 좌표 차이 계산
-   diffX=Math.abs(e.offsetX-20);
-   diffY=Math.abs(e.offsetY-60);
-   
-   
-   // console.log("drag start");
- }
- 
-  BlockTile(block,-1,0); 
-  BlockTile(block,0,0);
-  BlockTile(block,1,0);
-  block.draggable=true;
-  block.addEventListener("dragstart" ,onDragStart);
- 
- // block.setAttribute('class','block')
- root.appendChild(block);
- 
- }
 
 
 function render(){
  
   Board();
-  Block1(diffX,diffY);
-  Block2();
+  Block1(diff.setter);
+  Block2(diff.setter);
 
   
 }

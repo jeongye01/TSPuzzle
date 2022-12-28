@@ -1,8 +1,8 @@
-import { root } from "../..";
+import { diff, root } from "../..";
 import BlockTile from "../BlockTile";
 import { boardState } from "../..";
 
-export default function Block1 (diffX:number,diffY:number){
+export default function Block1 (diffSetter:(x:number,y:number)=>void){
  
     const block=document.createElement('div');
    
@@ -11,16 +11,18 @@ export default function Block1 (diffX:number,diffY:number){
      
      
      // main block 좌표와 마우스 좌표 차이 계산
-     diffX=Math.abs(e.offsetX-20);
-     diffY=Math.abs(e.offsetY-60);
-     
+     console.log(e.offsetX,e.offsetY)
+     const diffX=e.offsetX-20;
+     const diffY=e.offsetY-60;
+     const bindDiffSetter=diffSetter.bind(diff);
+     bindDiffSetter(diffX,diffY)
      
      // console.log("drag start");
    }
    
-    BlockTile(block,-1,0); 
-    BlockTile(block,0,0);
-    BlockTile(block,1,0);
+    BlockTile(block); 
+    BlockTile(block);
+    BlockTile(block);
     block.draggable=true;
     block.addEventListener("dragstart" ,onDragStart);
    
