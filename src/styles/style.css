@@ -50,3 +50,7 @@ body {
 .block{
     position:absolute;
 }
+
+.-block--two{
+    display: flex;
+}

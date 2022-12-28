@@ -12,6 +12,16 @@ export const diff={
     this.y=diffY;
   }
 }
+export const blockInfo={
+   block:null,
+   fillFunc:null,
+   overFunc:null,
+   setter:function(block:HTMLDivElement,fillFunc:(x:number,y:number)=>void,overFunc:(x:number,y:number)=>void){
+     this.block=block;
+     this.fillFunc=fillFunc;
+     this.overFunc=overFunc;
+   }
+}
 export const boardState = Array.from(Array(10), () => Array(10).fill(0));
 const board=document.createElement('div');
 function Board (){
@@ -22,7 +32,7 @@ function Board (){
     const mainY=e.y-diff.y;
     const x=Math.trunc(mainX/40);
     const y=Math.trunc(mainY/40);
-   fillBlock1(x,y);
+   blockInfo.fillFunc(x,y);
  }
  const onDragOver=(e)=>{
  e.preventDefault();
@@ -37,7 +47,7 @@ function Board (){
  
 // main block 좌표가 속해있는 board 좌표
 
-overBlock1(x,y);
+blockInfo.overFunc(x,y);
 
  
 
@@ -78,8 +88,8 @@ overBlock1(x,y);
 function render(){
  
   Board();
-  Block1(diff.setter);
-  Block2(diff.setter);
+  Block1(diff.setter,blockInfo.setter);
+  Block2(diff.setter,blockInfo.setter);
 
   
 }

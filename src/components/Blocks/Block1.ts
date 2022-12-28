@@ -1,8 +1,8 @@
-import { diff, root } from "../..";
+import { blockInfo, diff, root } from "../..";
 import BlockTile from "../BlockTile";
 import { boardState } from "../..";
 
-export default function Block1 (diffSetter:(x:number,y:number)=>void){
+export default function Block1 (diffSetter:(x:number,y:number)=>void,blockSetter:(block:HTMLDivElement,fillFunc:(x:number,y:number)=>void,overFunc:(x:number,y:number)=>void)=>void){
  
     const block=document.createElement('div');
    
@@ -16,7 +16,8 @@ export default function Block1 (diffSetter:(x:number,y:number)=>void){
      const diffY=e.offsetY-60;
      const bindDiffSetter=diffSetter.bind(diff);
      bindDiffSetter(diffX,diffY)
-     
+     const bindBlockSetter=blockSetter.bind(blockInfo);
+     bindBlockSetter(block,fillBlock1,overBlock1)
      // console.log("drag start");
    }
    
