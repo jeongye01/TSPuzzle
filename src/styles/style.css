@@ -54,3 +54,10 @@ body {
 .-block--two{
     display: flex;
 }
+.-block--three{
+    width: fit-content;
+   display:flex;
+   flex-direction: column;
+   align-items: end;
+    
+}

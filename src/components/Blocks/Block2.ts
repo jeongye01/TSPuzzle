@@ -37,6 +37,7 @@ export const fillBlock2 =(x:number,y:number)=>{
    
   // console.log(Math.trunc(mainX/40),Math.trunc(mainY/40));
   if(x-1<0 || x+1>9)return;
+  // console.log(boardState[x][y] , boardState[x-1][y] , boardState[x+1][y])
   if(boardState[x][y] || boardState[x-1][y] || boardState[x+1][y]) return;
 
   boardState[x][y]= boardState[x-1][y]=boardState[x+1][y]=1;
@@ -50,7 +51,7 @@ export const fillBlock2 =(x:number,y:number)=>{
 
 export const overBlock2=(x:number,y:number)=>{
    if(x-1<0 || x+1>9)return;
-if(boardState[x][y] || boardState[x-1][y] || boardState[x-1][y]) return;
+if(boardState[x][y] || boardState[x-1][y] || boardState[x+1][y]) return;
 
 document.getElementById(`${x}+${y}`).classList.add('tile-over');
 document.getElementById(`${x-1}+${y}`).classList.add('tile-over');

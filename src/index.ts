@@ -1,6 +1,7 @@
-import Block1, { fillBlock1, overBlock1 } from './components/Blocks/Block1';
+import Block1 from './components/Blocks/Block1';
 import { Block2 } from './components/Blocks/Block2';
-import BlockTile from './components/BlockTile';
+import { Block3 } from './components/Blocks/Block3';
+
 import  './styles/style.css';
 export const root=document.getElementById('root')  as HTMLElement;
 export const diff={
@@ -90,6 +91,7 @@ function render(){
   Board();
   Block1(diff.setter,blockInfo.setter);
   Block2(diff.setter,blockInfo.setter);
+  Block3(diff.setter,blockInfo.setter);
 
   
 }
