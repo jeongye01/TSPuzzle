@@ -1,6 +1,7 @@
 import { blockInfo, boardState, diff, root } from "../..";
-import BlockTile from "../BlockTile";
+import BlockGenerator from "../BlockGenerator";
 
+const blockShape=[[1,1,1]];
 export function Block2 (diffSetter:(x:number,y:number)=>void,blockSetter:(block:HTMLDivElement,fillFunc:(x:number,y:number)=>void,overFunc:(x:number,y:number)=>void)=>void){
  
     const block=document.createElement('div');
@@ -20,9 +21,7 @@ export function Block2 (diffSetter:(x:number,y:number)=>void,blockSetter:(block:
         // console.log("drag start");
       }
    
-    BlockTile(block); 
-    BlockTile(block);
-    BlockTile(block);
+   BlockGenerator(block,blockShape);
     block.draggable=true;
     block.addEventListener("dragstart" ,onDragStart);
     block.setAttribute('class','-block--two block');
@@ -37,24 +36,35 @@ export const fillBlock =(x:number,y:number)=>{
    
   // console.log(Math.trunc(mainX/40),Math.trunc(mainY/40));
   if(x-1<0 || x+1>9)return;
-  // console.log(boardState[x][y] , boardState[x-1][y] , boardState[x+1][y])
-  if(boardState[x][y] || boardState[x-1][y] || boardState[x+1][y]) return;
+  console.log(boardState);
+  for(let ox=0; ox<blockShape[0].length;ox++){
+   for(let oy=0; oy<blockShape.length;oy++){
+      if(boardState[y+oy][x+ox-1]) return;
+   }
+}
+for(let ox=0; ox<blockShape[0].length;ox++){
+   for(let oy=0; oy<blockShape.length;oy++){
+      boardState[y+oy][x+ox-1] =1;
+      const targetTile= document.getElementById(`${x+ox-1}+${y+oy}`);
+      targetTile.classList.add('tile-filled');
+      targetTile.classList.remove('tile-over');
+   }
+}
 
-  boardState[x][y]= boardState[x-1][y]=boardState[x+1][y]=1;
-  document.getElementById(`${x}+${y}`).classList.add('tile-filled');
-  document.getElementById(`${x-1}+${y}`).classList.add('tile-filled');
-  document.getElementById(`${x+1}+${y}`).classList.add('tile-filled');
-  document.getElementById(`${x}+${y}`).classList.remove('tile-over');
-  document.getElementById(`${x-1}+${y}`).classList.remove('tile-over');
-  document.getElementById(`${x+1}+${y}`).classList.remove('tile-over');
 }
 
 export const overBlock=(x:number,y:number)=>{
    if(x-1<0 || x+1>9)return;
-if(boardState[x][y] || boardState[x-1][y] || boardState[x+1][y]) return;
-
-document.getElementById(`${x}+${y}`).classList.add('tile-over');
-document.getElementById(`${x-1}+${y}`).classList.add('tile-over');
-document.getElementById(`${x+1}+${y}`).classList.add('tile-over');
+   for(let ox=0; ox<blockShape[0].length;ox++){
+      for(let oy=0; oy<blockShape.length;oy++){
+         if(boardState[y+oy][x+ox-1]) return;
+      }
+   }
+   for(let ox=0; ox<blockShape[0].length;ox++){
+      for(let oy=0; oy<blockShape.length;oy++){
+         const targetTile= document.getElementById(`${x+ox-1}+${y+oy}`);
+         targetTile.classList.add('tile-over');
+      }
+   }
 }
   

@@ -105,9 +105,9 @@ function render(){
   const blockContainer=document.createElement('div');
   
   
-  Block1(diff.setter,blockInfo.setter);
-/*  Block2(diff.setter,blockInfo.setter);
- Block3(diff.setter,blockInfo.setter);
+ // Block1(diff.setter,blockInfo.setter);
+ Block2(diff.setter,blockInfo.setter);
+/* Block3(diff.setter,blockInfo.setter);
   Block4(diff.setter,blockInfo.setter);
    Block5(diff.setter,blockInfo.setter);
  Block6(diff.setter,blockInfo.setter);
