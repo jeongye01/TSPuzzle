@@ -1,71 +1,66 @@
-import { blockInfo, boardState, diff, root } from "../..";
+import { blockInfo, diff, root } from "../..";
+import { boardState } from "../..";
 import BlockGenerator from "../BlockGenerator";
-import BlockTile from "../BlockTile";
+import { statesSetter,calcBlockOriginPos } from "../blockDragStart";
+
 const blockShape=[[1,1,1],[1,1,1],[1,1,1]];
-export function Block9 (diffSetter:(x:number,y:number)=>void,blockSetter:(block:HTMLDivElement,fillFunc:(x:number,y:number)=>void,overFunc:(x:number,y:number)=>void)=>void){
+export function Block9 (){
  
-    const block=document.createElement('div');
+  const block=document.createElement('div');
    
     
-    const onDragStart=(e)=>{
-     
-     
-        // main block 좌표와 마우스 좌표 차이 계산
-        console.log(e.offsetX,e.offsetY)
-        const diffX=e.offsetX-60;
-        const diffY=e.offsetY-20;
-        const bindDiffSetter=diffSetter.bind(diff);
-        bindDiffSetter(diffX,diffY)
-        const bindBlockSetter=blockSetter.bind(blockInfo);
-        bindBlockSetter(block,fillBlock,overBlock)
-        // console.log("drag start");
-      }
-   
-    BlockGenerator(block,blockShape);
-    block.draggable=true;
-    block.addEventListener("dragstart" ,onDragStart);
-    block.setAttribute('class','-block--nine block');
-
-   // block.setAttribute('class','block')
-   root.appendChild(block);
+  const onDragStart=(e)=>{
+     const {diffX,diffY} =calcBlockOriginPos(e.offsetX,e.offsetY,blockShape);
+     statesSetter(diffX,diffY,block,fillBlock,overBlock);
+  
+ }
+ 
+ BlockGenerator(block,blockShape);
+  block.draggable=true;
+  block.addEventListener("dragstart" ,onDragStart);
+  block.setAttribute('class','block -block--eight');
+ // block.setAttribute('class','block')
+ root.appendChild(block);
    
    }
-export const fillBlock =(x:number,y:number)=>{
-    // main block 좌표가 속해있는 board 좌표
- // console.log(e.target.dataset);
-   
-  // console.log(Math.trunc(mainX/40),Math.trunc(mainY/40));
 
-  if(x-1<0 || x+1>9)return;
-  if( y+2>9)return;
-  for(let i=-1;i<2;i++){
-    for(let j=0;j<3;j++){
-        if(  boardState[x+i][y+j])return;
-    }
-  }  
-  for(let i=-1;i<2;i++){
-    for(let j=0;j<3;j++){   
-        boardState[x+i][y+j]=1;
-        document.getElementById(`${x+i}+${y+j}`).classList.add('tile-filled');
-        document.getElementById(`${x+i}+${y+j}`).classList.remove('tile-over');
-    }
-  }  
+
+
+export const fillBlock =(x:number,y:number)=>{
+  console.log(x,y);
+if(x-1<0 ||x+1>9 || y+1>9 || y-1<0)return;
+console.log(boardState);
+for(let ox=0; ox<blockShape[0].length;ox++){
+  for(let oy=0; oy<blockShape.length;oy++){
+     if(boardState[y+oy-1][x+ox-1]&& blockShape[oy][ox]) return;
+  }
+}
+for(let ox=0; ox<blockShape[0].length;ox++){
+for(let oy=0; oy<blockShape.length;oy++){
+  if(!blockShape[oy][ox])continue;
+  boardState[y+oy-1][x+ox-1] =1;
+   const targetTile= document.getElementById(`${x+ox-1}+${y+oy-1}`);
+   targetTile.classList.add('tile-filled');
+   targetTile.classList.remove('tile-over');
+}
+}
+
+
 }
 
 export const overBlock=(x:number,y:number)=>{
-    if(x-1<0 || x+1>9)return;
-  if( y+2>9)return;
-  for(let i=-1;i<2;i++){
-    for(let j=0;j<3;j++){
-       if(  boardState[x+i][y+j])return;
-    }
-  }  
-  for(let i=-1;i<2;i++){
-    for(let j=0;j<3;j++){
-        if(boardState[x+i][y+j])return;
-        document.getElementById(`${x+i}+${y+j}`).classList.add('tile-over');
-      
-    }
-  }  
+  if(x-1<0 ||x+1>9 || y+1>9 || y-1<0)return;
+for(let ox=0; ox<blockShape[0].length;ox++){
+  for(let oy=0; oy<blockShape.length;oy++){
+    if(boardState[y+oy-1][x+ox-1]&& blockShape[oy][ox]) return;
+  }
+}
+for(let ox=0; ox<blockShape[0].length;ox++){
+for(let oy=0; oy<blockShape.length;oy++){
+  if(!blockShape[oy][ox])continue;
+   const targetTile= document.getElementById(`${x+ox-1}+${y+oy-1}`);
+   targetTile.classList.add('tile-over');
+}
+}
 }
   
