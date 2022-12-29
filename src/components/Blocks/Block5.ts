@@ -1,6 +1,8 @@
 import { blockInfo, boardState, diff, root } from "../..";
 import BlockContainer from "../blockContainer";
 import BlockTile from "../BlockTile";
+import { Block4 } from "./Block4";
+
 
 export function Block5 (diffSetter:(x:number,y:number)=>void,blockSetter:(block:HTMLDivElement,fillFunc:(x:number,y:number)=>void,overFunc:(x:number,y:number)=>void)=>void){
  

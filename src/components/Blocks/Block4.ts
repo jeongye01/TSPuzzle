@@ -1,11 +1,10 @@
 import { blockInfo, boardState, diff, root } from "../..";
-import BlockContainer from "../blockContainer";
-import BlockTile from "../BlockTile";
+import BlockGenerator from "../BlockGenerator";
 
+const blockShape=[[1,1],[1,0]];
 export function Block4 (diffSetter:(x:number,y:number)=>void,blockSetter:(block:HTMLDivElement,fillFunc:(x:number,y:number)=>void,overFunc:(x:number,y:number)=>void)=>void){
  
     const block=document.createElement('div');
-    const blockRowContainer=document.createElement('div');
     
     const onDragStart=(e)=>{
      
@@ -22,12 +21,10 @@ export function Block4 (diffSetter:(x:number,y:number)=>void,blockSetter:(block:
       }
    
    
-      BlockContainer(blockRowContainer);
-    block.appendChild(blockRowContainer);
-    BlockTile(block); 
+    BlockGenerator(block,blockShape);
     block.draggable=true;
     block.addEventListener("dragstart" ,onDragStart);
-    block.setAttribute('class','-block--four block');
+    block.setAttribute('class',' -block--four block');
 
    // block.setAttribute('class','block')
    root.appendChild(block);
