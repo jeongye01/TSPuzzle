@@ -85,3 +85,9 @@ body {
    display: flex;
    flex-direction: column;
 }  
+
+.-block--eight{
+    display: flex;
+    flex-direction:column;
+    align-items: end;
+ }  
