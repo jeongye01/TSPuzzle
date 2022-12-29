@@ -16,7 +16,7 @@ export function Block2 (diffSetter:(x:number,y:number)=>void,blockSetter:(block:
         const bindDiffSetter=diffSetter.bind(diff);
         bindDiffSetter(diffX,diffY)
         const bindBlockSetter=blockSetter.bind(blockInfo);
-        bindBlockSetter(block,fillBlock2,overBlock2)
+        bindBlockSetter(block,fillBlock,overBlock)
         // console.log("drag start");
       }
    
@@ -31,7 +31,7 @@ export function Block2 (diffSetter:(x:number,y:number)=>void,blockSetter:(block:
    root.appendChild(block);
    
    }
-export const fillBlock2 =(x:number,y:number)=>{
+export const fillBlock =(x:number,y:number)=>{
     // main block 좌표가 속해있는 board 좌표
  // console.log(e.target.dataset);
    
@@ -49,7 +49,7 @@ export const fillBlock2 =(x:number,y:number)=>{
   document.getElementById(`${x+1}+${y}`).classList.remove('tile-over');
 }
 
-export const overBlock2=(x:number,y:number)=>{
+export const overBlock=(x:number,y:number)=>{
    if(x-1<0 || x+1>9)return;
 if(boardState[x][y] || boardState[x-1][y] || boardState[x+1][y]) return;
 
