@@ -109,8 +109,8 @@ function render(){
  // Block2();
 Block3();
   Block4();
-/*   Block5(diff.setter,blockInfo.setter);
- Block6(diff.setter,blockInfo.setter);
+  Block5();
+/* Block6(diff.setter,blockInfo.setter);
  Block7(diff.setter,blockInfo.setter);
  Block8(diff.setter,blockInfo.setter);
   Block9(diff.setter,blockInfo.setter);
@@ -118,7 +118,7 @@ Block3();
    Block11(diff.setter,blockInfo.setter); 
    Block12(diff.setter,blockInfo.setter);
   Block13(diff.setter,blockInfo.setter);*/
-  Block14(diff.setter,blockInfo.setter);
+  Block14();
   const blocks=document.querySelectorAll('.block');
 
   blocks.forEach((b)=> blockContainer.appendChild(b));
