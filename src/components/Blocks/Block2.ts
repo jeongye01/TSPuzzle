@@ -1,6 +1,6 @@
 import { blockInfo, boardState, diff, root } from "../..";
 import BlockGenerator from "../BlockGenerator";
-
+import { statesSetter,calcBlockOriginPos } from "../blockDragStart";
 const blockShape=[[1,1,1]];
 export function Block2 (diffSetter:(x:number,y:number)=>void,blockSetter:(block:HTMLDivElement,fillFunc:(x:number,y:number)=>void,overFunc:(x:number,y:number)=>void)=>void){
  
@@ -10,15 +10,8 @@ export function Block2 (diffSetter:(x:number,y:number)=>void,blockSetter:(block:
     const onDragStart=(e)=>{
      
      
-        // main block 좌표와 마우스 좌표 차이 계산
-        console.log(e.offsetX,e.offsetY)
-        const diffX=e.offsetX-60;
-        const diffY=e.offsetY-20;
-        const bindDiffSetter=diffSetter.bind(diff);
-        bindDiffSetter(diffX,diffY)
-        const bindBlockSetter=blockSetter.bind(blockInfo);
-        bindBlockSetter(block,fillBlock,overBlock)
-        // console.log("drag start");
+      const {diffX,diffY} =calcBlockOriginPos(e.offsetX,e.offsetY,blockShape);
+      statesSetter(diffX,diffY,block,fillBlock,overBlock);
       }
    
    BlockGenerator(block,blockShape);

@@ -1,25 +1,19 @@
 import { blockInfo, diff, root } from "../..";
-import BlockTile from "../BlockTile";
 import { boardState } from "../..";
 import BlockGenerator from "../BlockGenerator";
+import { statesSetter,calcBlockOriginPos } from "../blockDragStart";
+
+
 const blockShape=[[1],[1],[1]];
-export default function Block1 (diffSetter:(x:number,y:number)=>void,blockSetter:(block:HTMLDivElement,fillFunc:(x:number,y:number)=>void,overFunc:(x:number,y:number)=>void)=>void){
+export default function Block1 (){
  
     const block=document.createElement('div');
    
     
     const onDragStart=(e)=>{
-     
-     
-     // main block 좌표와 마우스 좌표 차이 계산
-     console.log(e.offsetX,e.offsetY)
-     const diffX=e.offsetX-20;
-     const diffY=e.offsetY-60;
-     const bindDiffSetter=diffSetter.bind(diff);
-     bindDiffSetter(diffX,diffY)
-     const bindBlockSetter=blockSetter.bind(blockInfo);
-     bindBlockSetter(block,fillBlock1,overBlock1)
-     // console.log("drag start");
+       const {diffX,diffY} =calcBlockOriginPos(e.offsetX,e.offsetY,blockShape);
+       statesSetter(diffX,diffY,block,fillBlock,overBlock);
+    
    }
    
    BlockGenerator(block,blockShape);
@@ -31,7 +25,7 @@ export default function Block1 (diffSetter:(x:number,y:number)=>void,blockSetter
    
 }
 
-export const fillBlock1 =(x:number,y:number)=>{
+export const fillBlock =(x:number,y:number)=>{
      // main block 좌표가 속해있는 board 좌표
   // console.log(e.target.dataset);
     
@@ -54,7 +48,7 @@ export const fillBlock1 =(x:number,y:number)=>{
   
 }
 
-export const overBlock1=(x:number,y:number)=>{
+export const overBlock=(x:number,y:number)=>{
     if(y-1<0 || y+1>9)return;
     for(let ox=0; ox<blockShape[0].length;ox++){
       for(let oy=0; oy<blockShape.length;oy++){
@@ -70,3 +64,5 @@ export const overBlock1=(x:number,y:number)=>{
       }
    }
 }
+
+
