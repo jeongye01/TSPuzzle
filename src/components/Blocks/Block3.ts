@@ -1,4 +1,5 @@
 import { blockInfo, boardState, diff, root } from "../..";
+import BlockContainer from "../blockContainer";
 import BlockTile from "../BlockTile";
 
 export function Block3 (diffSetter:(x:number,y:number)=>void,blockSetter:(block:HTMLDivElement,fillFunc:(x:number,y:number)=>void,overFunc:(x:number,y:number)=>void)=>void){
@@ -21,13 +22,7 @@ export function Block3 (diffSetter:(x:number,y:number)=>void,blockSetter:(block:
       }
    
     BlockTile(block); 
-    const tile=document.createElement('div');  
-    tile.setAttribute('class','tile');  
-    const tile2=document.createElement('div');  
-    tile2.setAttribute('class','tile');  
-    blockRowContainer.appendChild(tile);
-    blockRowContainer.appendChild(tile2);
-    blockRowContainer.style.display="flex";
+    BlockContainer(blockRowContainer);
     block.appendChild(blockRowContainer);
   
     block.draggable=true;

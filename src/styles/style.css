@@ -80,3 +80,8 @@ body {
    align-items: start;
     
 }
+
+.-block--six{
+   display: flex;
+   flex-direction: column;
+}  

@@ -3,6 +3,7 @@ import { Block2 } from './components/Blocks/Block2';
 import { Block3 } from './components/Blocks/Block3';
 import { Block4 } from './components/Blocks/Block4';
 import { Block5 } from './components/Blocks/Block5';
+import { Block6 } from './components/Blocks/Block6';
 
 import  './styles/style.css';
 export const root=document.getElementById('root')  as HTMLElement;
@@ -99,6 +100,7 @@ function render(){
   Block3(diff.setter,blockInfo.setter);
   Block4(diff.setter,blockInfo.setter);
   Block5(diff.setter,blockInfo.setter);
+  Block6(diff.setter,blockInfo.setter);
 
   const blocks=document.querySelectorAll('.block');
   console.log(blocks);
@@ -107,6 +109,7 @@ function render(){
   blockContainer.style.display="flex";
   blockContainer.style.width="full";
   blockContainer.style.marginTop="50px";
+  blockContainer.style.gap="20px";
   root.appendChild(blockContainer);
   
 }
