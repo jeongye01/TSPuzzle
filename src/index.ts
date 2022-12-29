@@ -2,9 +2,11 @@ import Block1 from './components/Blocks/Block1';
 import { Block2 } from './components/Blocks/Block2';
 import { Block3 } from './components/Blocks/Block3';
 import { Block4 } from './components/Blocks/Block4';
+import { Block5 } from './components/Blocks/Block5';
 
 import  './styles/style.css';
 export const root=document.getElementById('root')  as HTMLElement;
+
 export const diff={
   x:0,
   y:0,
@@ -90,11 +92,22 @@ blockInfo.overFunc(x,y);
 function render(){
  
   Board();
+  const blockContainer=document.createElement('div');
+  
   Block1(diff.setter,blockInfo.setter);
   Block2(diff.setter,blockInfo.setter);
   Block3(diff.setter,blockInfo.setter);
   Block4(diff.setter,blockInfo.setter);
+  Block5(diff.setter,blockInfo.setter);
 
+  const blocks=document.querySelectorAll('.block');
+  console.log(blocks);
+  blocks.forEach((b)=> blockContainer.appendChild(b));
+  console.log(blockContainer)
+  blockContainer.style.display="flex";
+  blockContainer.style.width="full";
+  blockContainer.style.marginTop="50px";
+  root.appendChild(blockContainer);
   
 }
 

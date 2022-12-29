@@ -25,8 +25,8 @@ export function Block2 (diffSetter:(x:number,y:number)=>void,blockSetter:(block:
     BlockTile(block);
     block.draggable=true;
     block.addEventListener("dragstart" ,onDragStart);
-    block.setAttribute('class','-block--two');
-   
+    block.setAttribute('class','-block--two block');
+
    // block.setAttribute('class','block')
    root.appendChild(block);
    

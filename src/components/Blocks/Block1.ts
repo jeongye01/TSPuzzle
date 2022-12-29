@@ -26,7 +26,7 @@ export default function Block1 (diffSetter:(x:number,y:number)=>void,blockSetter
     BlockTile(block);
     block.draggable=true;
     block.addEventListener("dragstart" ,onDragStart);
-   
+    block.setAttribute('class','block');
    // block.setAttribute('class','block')
    root.appendChild(block);
    

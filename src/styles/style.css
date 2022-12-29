@@ -41,23 +41,42 @@ body {
     border-radius: 5px;
     border: 0.5px solid white;
 }
+
+
 .tile-filled {
     background-color: var(--red);
 }
 .tile-over {
     background-color: green;
 }
+
 .block{
-    position:absolute;
+   
+    width:fit-content;
+    height: fit-content;
 }
 
 .-block--two{
     display: flex;
 }
 .-block--three{
-    width: fit-content;
+   
    display:flex;
    flex-direction: column;
    align-items: end;
+    
+}
+.-block--four{
+   
+   display:flex;
+   flex-direction: column;
+   align-items: start;
+    
+}
+.-block--five{
+   
+   display:flex;
+   flex-direction: column;
+   align-items: start;
     
 }
