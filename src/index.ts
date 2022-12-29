@@ -2,6 +2,7 @@ import Block1 from './components/Blocks/Block1';
 import { Block10 } from './components/Blocks/Block10';
 import { Block11 } from './components/Blocks/Block11';
 import {Block12} from './components/Blocks/Block12';
+import { Block13 } from './components/Blocks/Block13';
 import { Block2 } from './components/Blocks/Block2';
 import { Block3 } from './components/Blocks/Block3';
 import { Block4 } from './components/Blocks/Block4';
@@ -113,7 +114,8 @@ function render(){
   Block9(diff.setter,blockInfo.setter);
   Block10(diff.setter,blockInfo.setter); 
    Block11(diff.setter,blockInfo.setter); */
-   Block12(diff.setter,blockInfo.setter);
+  // Block12(diff.setter,blockInfo.setter);
+  Block13(diff.setter,blockInfo.setter);
   const blocks=document.querySelectorAll('.block');
 
   blocks.forEach((b)=> blockContainer.appendChild(b));
