@@ -1,4 +1,5 @@
 import Block1 from './components/Blocks/Block1';
+import { Block10 } from './components/Blocks/Block10';
 import { Block2 } from './components/Blocks/Block2';
 import { Block3 } from './components/Blocks/Block3';
 import { Block4 } from './components/Blocks/Block4';
@@ -107,11 +108,11 @@ function render(){
   Block7(diff.setter,blockInfo.setter);
   Block8(diff.setter,blockInfo.setter);
   Block9(diff.setter,blockInfo.setter);
-
+  Block10(diff.setter,blockInfo.setter);
   const blocks=document.querySelectorAll('.block');
-  console.log(blocks);
+
   blocks.forEach((b)=> blockContainer.appendChild(b));
-  console.log(blockContainer)
+
   blockContainer.style.display="flex";
   blockContainer.style.width="full";
   blockContainer.style.marginTop="50px";
