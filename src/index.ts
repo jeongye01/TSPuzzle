@@ -1,6 +1,7 @@
 import Block1 from './components/Blocks/Block1';
 import { Block10 } from './components/Blocks/Block10';
 import { Block11 } from './components/Blocks/Block11';
+import {Block12} from './components/Blocks/Block12';
 import { Block2 } from './components/Blocks/Block2';
 import { Block3 } from './components/Blocks/Block3';
 import { Block4 } from './components/Blocks/Block4';
@@ -101,17 +102,18 @@ function render(){
   Board();
   const blockContainer=document.createElement('div');
   
- // Block1(diff.setter,blockInfo.setter);
- //  Block2(diff.setter,blockInfo.setter);
- // Block3(diff.setter,blockInfo.setter);
-  // Block4(diff.setter,blockInfo.setter);
-  // Block5(diff.setter,blockInfo.setter);
- // Block6(diff.setter,blockInfo.setter);
- // Block7(diff.setter,blockInfo.setter);
- // Block8(diff.setter,blockInfo.setter);
-  //Block9(diff.setter,blockInfo.setter);
- // Block10(diff.setter,blockInfo.setter);
-   Block11(diff.setter,blockInfo.setter);
+ /* Block1(diff.setter,blockInfo.setter);
+  Block2(diff.setter,blockInfo.setter);
+ Block3(diff.setter,blockInfo.setter);
+  Block4(diff.setter,blockInfo.setter);
+   Block5(diff.setter,blockInfo.setter);
+ Block6(diff.setter,blockInfo.setter);
+ Block7(diff.setter,blockInfo.setter);
+ Block8(diff.setter,blockInfo.setter);
+  Block9(diff.setter,blockInfo.setter);
+  Block10(diff.setter,blockInfo.setter); 
+   Block11(diff.setter,blockInfo.setter); */
+   Block12(diff.setter,blockInfo.setter);
   const blocks=document.querySelectorAll('.block');
 
   blocks.forEach((b)=> blockContainer.appendChild(b));

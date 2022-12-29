@@ -97,14 +97,13 @@ body {
     display: flex;
     flex-direction:column;
     align-items: end;
-    height:120px;
+ 
  }  
 
  .-block--eleven{
     display: flex;
     flex-direction:column;
     align-items: end;
-    height:40px;
+ 
  }  
-
 
