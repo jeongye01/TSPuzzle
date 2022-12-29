@@ -2,7 +2,7 @@ import { blockInfo, boardState, diff, root } from "../..";
 import BlockGenerator from "../BlockGenerator";
 import { statesSetter,calcBlockOriginPos } from "../blockDragStart";
 const blockShape=[[1,1,1]];
-export function Block2 (diffSetter:(x:number,y:number)=>void,blockSetter:(block:HTMLDivElement,fillFunc:(x:number,y:number)=>void,overFunc:(x:number,y:number)=>void)=>void){
+export function Block2 (){
  
     const block=document.createElement('div');
    
