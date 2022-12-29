@@ -4,6 +4,7 @@ import { Block3 } from './components/Blocks/Block3';
 import { Block4 } from './components/Blocks/Block4';
 import { Block5 } from './components/Blocks/Block5';
 import { Block6 } from './components/Blocks/Block6';
+import Block7 from './components/Blocks/Block7';
 
 import  './styles/style.css';
 export const root=document.getElementById('root')  as HTMLElement;
@@ -101,6 +102,7 @@ function render(){
   Block4(diff.setter,blockInfo.setter);
   Block5(diff.setter,blockInfo.setter);
   Block6(diff.setter,blockInfo.setter);
+  Block7(diff.setter,blockInfo.setter);
 
   const blocks=document.querySelectorAll('.block');
   console.log(blocks);
