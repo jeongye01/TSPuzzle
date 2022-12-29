@@ -111,7 +111,7 @@ Block3();
   Block4();
   Block5();
 Block6();
- Block7(diff.setter,blockInfo.setter);
+ Block7();
  Block8(diff.setter,blockInfo.setter);
   Block9(diff.setter,blockInfo.setter);
   Block10(diff.setter,blockInfo.setter); 
