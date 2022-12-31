@@ -1,6 +1,6 @@
 import {  root } from "../..";
 import BlockGenerator from "../BlockGenerator";
-import { statesSetter,calcBlockOriginPos } from "../blockDragStart";
+import { blockStateSetter,calcBlockOriginPos } from "../blockDragStart";
 
 
 export function Block (blockShape:number[][]){
@@ -35,7 +35,7 @@ const isAlignCenter=()=>{
    
    
     const {originX,originY} =calcBlockOriginPos(e.offsetX,e.offsetY,blockShape);
-    statesSetter(originX,originY,blockElement,blockShape);
+    blockStateSetter(originX,originY,blockElement,blockShape);
     }
   BlockGenerator(blockElement,blockShape);
 

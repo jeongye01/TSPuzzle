@@ -9,7 +9,7 @@ export const calcBlockOriginPos=(offsetX,offsetY,blockShape:number[][])=>{
    
 }
 
-export const statesSetter=(distanceFromOriginX,distanceFromOriginY,blockElement,blockShape)=>{
+export const blockStateSetter=(distanceFromOriginX,distanceFromOriginY,blockElement,blockShape)=>{
     const bindDiffSetter=distanceFromOrigin.setter.bind(distanceFromOrigin);
     bindDiffSetter(distanceFromOriginX,distanceFromOriginY)
     const bindBlockSetter=block.setter.bind(block);
