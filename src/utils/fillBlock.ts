@@ -4,7 +4,7 @@ import { isBlockOverlapping } from "./isBlockOverlapping";
 import { isOutOfRange } from "./isOutOfRange";
 
 export const fillBlock =(x:number,y:number)=>{
-    console.log(x,y);
+    console.log("x:",x,"y:",y);
     const {shape:blockShape}= block;
     console.log(blockShape);
     const rowLength=blockShape.length;

@@ -1,5 +1,6 @@
 
 import { Block } from './components/Blocks/Block';
+import { BLOCK_SHAPES } from './constants/BlockShapes';
 
 
 import  './styles/style.css';
@@ -38,7 +39,7 @@ function Board (){
   const onDrop=(e)=>{
     e.stopPropagation();
    // 보드 상에서의 x,y좌표
-   const {x,y}=calcOriginTileBoardIndex(e.x,e.y);
+   const {x,y}=calcOriginTileBoardIndex(e.x-board.getBoundingClientRect().left,e.y-board.getBoundingClientRect().top);
    fillBlock(x,y);
  }
  const onDragOver=(e)=>{
@@ -48,7 +49,7 @@ function Board (){
    tileOver.classList.remove('tile-over');
  });
  // 보드 상에서의 x,y좌표
- const {x,y}=calcOriginTileBoardIndex(e.x,e.y);
+ const {x,y}=calcOriginTileBoardIndex(e.x-board.getBoundingClientRect().left,e.y-board.getBoundingClientRect().top);
 
  overBlock(x,y);
 
@@ -81,7 +82,8 @@ function Board (){
    board.appendChild(rowContainer);
    
  });
-
+  board.id='board';
+  console.log(board)
  root.appendChild(board);
 }
 
@@ -94,65 +96,10 @@ function render(){
   const blockContainer=document.createElement('div');
  
 // 1x1
-Block([[1]]); 
+ for(let i=0;i<3;i++){
+  Block(BLOCK_SHAPES[Math.trunc(Math.random()*31)]); 
+ }
 
-// 1x2
-Block([[1],[1]]);
-
-// 1x3
-Block([[1],[1],[1]]);
-
-// 1x4
-Block([[1],[1],[1],[1]]);
-
-// 1x5
-Block([[1],[1],[1],[1],[1]]);
-
-
-// 2x1
-Block([[1,1]]);
-
-// 2x2
-Block([[0,1],[1,1]]);
-Block([[1,0],[1,1]]);
-Block([[1,1],[1,0]]);
-Block([[1,1],[0,1]]);
-Block([[1,1],[1,1]]);
-
-// 2x3
-Block([[1,1],[1,0],[1,0]]);
-Block([[1,0],[1,1],[1,0]]);
-Block([[1,0],[1,0],[1,1]]);
-Block([[1,1],[0,1],[0,1]]);
-Block([[0,1],[1,1],[0,1]]);
-Block([[0,1],[0,1],[1,1]]);
-
-// 3x1
-Block([[1,1,1]]);
-
-// 3x2
-Block([[1,1,1],[0,0,1]]);
-Block([[1,0,0],[1,1,1]]);
-Block([[1,1,1],[0,0,1]]);
-Block([[1,0,0],[1,1,1]]);
-Block([[0,0,1],[1,1,1]]);
-Block([[1,1,1],[1,0,0]]);
-
-// 3x3
-Block([[1,1,1],[0,0,1],[0,0,1]]);
-Block([[0,0,1],[0,0,1],[1,1,1]]);
-Block([[1,0,0],[1,0,0],[1,1,1]]);
-Block([[1,1,1],[1,0,0],[1,0,0]]);
-Block([[1,1,1],[1,1,1],[1,1,1]]);
-
-
-
-// 4x1
-Block([[1,1,1,1]])
-
-// 5x1
-
-Block([[1,1,1,1,1]]);
 
   const blocks=document.querySelectorAll('.block');
 

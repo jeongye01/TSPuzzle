@@ -18,16 +18,13 @@ body {
     box-sizing: border-box;
 }
 
-.container{
-    background-color: var(--board-innerBg);
-    max-width: 530px;
-    max-height: 700px;
-    margin:auto;
-    margin-top: auto;
-    margin-bottom: auto;
-    width: 100vw;
-    height: 100vh;
+#root{
+  display: flex;
+  align-items: center;
+  justify-content:center;
+  flex-direction: column;
 }
+
 .row-container{
   
     display: flex;
