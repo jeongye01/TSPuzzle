@@ -7,19 +7,28 @@ import { fillBlock } from './utils/fillBlock';
 import { overBlock } from './utils/overBlock';
 export const root=document.getElementById('root')  as HTMLElement;
 
-export const diff={
-  x:0,
-  y:0,
-  setter:function(diffX:number,diffY:number){
-    this.x=diffX;
-    this.y=diffY;
+export const calcOriginTileBoardIndex=(mouseX:number,mouseY:number)=>{
+  const originPosX=mouseX-distanceFromOrigin.x;
+  const originPosY=mouseY-distanceFromOrigin.y;
+  const x=Math.trunc(originPosX/40); // 보드 상에서의 x좌표
+  const y=Math.trunc(originPosY/40); // 보드 상에셔의 y좌표
+  return {x,y};
+}
+
+export const distanceFromOrigin={
+  x:null,
+  y:null,
+  setter:function(x:number,y:number){
+    this.x=x;
+    this.y=y;
   }
 }
-export const blockInfo={
-   block:null,
+
+export const block={
+   element:null,
    shape:null,
-   setter:function(block:HTMLDivElement,shape:number[][]){
-     this.block=block;
+   setter:function(element:HTMLDivElement,shape:number[][]){
+     this.element=element;
      this.shape=shape;
    }
 }
@@ -28,12 +37,9 @@ const board=document.createElement('div');
 function Board (){
   const onDrop=(e)=>{
     e.stopPropagation();
-   // main block 좌표
-    const mainX= e.x-diff.x;
-    const mainY=e.y-diff.y;
-    const x=Math.trunc(mainX/40);
-    const y=Math.trunc(mainY/40);
-   fillBlock(x,y,blockInfo.shape);
+   // 보드 상에서의 x,y좌표
+   const {x,y}=calcOriginTileBoardIndex(e.x,e.y);
+   fillBlock(x,y);
  }
  const onDragOver=(e)=>{
  e.preventDefault();
@@ -41,13 +47,10 @@ function Board (){
  allTileOver.forEach((tileOver)=>{
    tileOver.classList.remove('tile-over');
  });
- const mainX=e.x-diff.x;
- const mainY=e.y-diff.y;
- const x=Math.trunc(mainX/40);
- const y=Math.trunc(mainY/40);
+ // 보드 상에서의 x,y좌표
+ const {x,y}=calcOriginTileBoardIndex(e.x,e.y);
 
-// main block 좌표가 속해있는 board 좌표
- overBlock(x,y,blockInfo.shape);
+ overBlock(x,y);
 
  
 
@@ -89,25 +92,68 @@ function render(){
  
   Board();
   const blockContainer=document.createElement('div');
-  
-  
+ 
+// 1x1
+Block([[1]]); 
+
+// 1x2
+Block([[1],[1]]);
+
+// 1x3
 Block([[1],[1],[1]]);
- Block([[1,1,1]]);
+
+// 1x4
+Block([[1],[1],[1],[1]]);
+
+// 1x5
+Block([[1],[1],[1],[1],[1]]);
+
+
+// 2x1
+Block([[1,1]]);
+
+// 2x2
 Block([[0,1],[1,1]]);
-  Block([[1,0],[1,1]]);
-  Block([[1,1],[1,0]]);
+Block([[1,0],[1,1]]);
+Block([[1,1],[1,0]]);
+Block([[1,1],[0,1]]);
 Block([[1,1],[1,1]]);
- Block([[1],[1]]);
- Block([[1,1],[0,1],[0,1]]);
- Block([[1,1,1],[1,1,1],[1,1,1]]);
-  Block([[0,0,1],[0,0,1],[1,1,1]]); 
-   Block([[1]]); 
-   Block([[1,1]]);
-  Block([[1,1,1,1,1]]);
-  Block([[1,1],[0,1]]);
-  Block([[1,1,1,1]]);
-  Block([[1],[1],[1],[1]]);
-  Block([[1,1,1],[1,0,0],[1,0,0]]);
+
+// 2x3
+Block([[1,1],[1,0],[1,0]]);
+Block([[1,0],[1,1],[1,0]]);
+Block([[1,0],[1,0],[1,1]]);
+Block([[1,1],[0,1],[0,1]]);
+Block([[0,1],[1,1],[0,1]]);
+Block([[0,1],[0,1],[1,1]]);
+
+// 3x1
+Block([[1,1,1]]);
+
+// 3x2
+Block([[1,1,1],[0,0,1]]);
+Block([[1,0,0],[1,1,1]]);
+Block([[1,1,1],[0,0,1]]);
+Block([[1,0,0],[1,1,1]]);
+Block([[0,0,1],[1,1,1]]);
+Block([[1,1,1],[1,0,0]]);
+
+// 3x3
+Block([[1,1,1],[0,0,1],[0,0,1]]);
+Block([[0,0,1],[0,0,1],[1,1,1]]);
+Block([[1,0,0],[1,0,0],[1,1,1]]);
+Block([[1,1,1],[1,0,0],[1,0,0]]);
+Block([[1,1,1],[1,1,1],[1,1,1]]);
+
+
+
+// 4x1
+Block([[1,1,1,1]])
+
+// 5x1
+
+Block([[1,1,1,1,1]]);
+
   const blocks=document.querySelectorAll('.block');
 
   blocks.forEach((b)=> blockContainer.appendChild(b));

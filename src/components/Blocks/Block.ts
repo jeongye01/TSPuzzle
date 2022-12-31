@@ -13,27 +13,39 @@ const isAlignEnd=()=>{
       break;
     }
   }
+
   return result;
 }
-
-  const block=document.createElement('div');
+ 
+const isAlignCenter=()=>{
+  let result=false;
+  for(let i=0;i<blockShape.length;i++){
+    if(blockShape[i][blockShape[0].length-1]===0 && blockShape[i][0]===0){
+      result=true;
+      break;
+    }
+  }
+  
+  return result;
+}
+  const blockElement=document.createElement('div');
   
   
   const onDragStart=(e)=>{
    
    
-    const {diffX,diffY} =calcBlockOriginPos(e.offsetX,e.offsetY,blockShape);
-    statesSetter(diffX,diffY,block,blockShape);
+    const {originX,originY} =calcBlockOriginPos(e.offsetX,e.offsetY,blockShape);
+    statesSetter(originX,originY,blockElement,blockShape);
     }
-  BlockGenerator(block,blockShape);
+  BlockGenerator(blockElement,blockShape);
 
-  block.draggable=true;
-  block.addEventListener("dragstart" ,onDragStart);
-  block.setAttribute('class',`${isAlignEnd()?"-align--end":""} block`);
+  blockElement.draggable=true;
+  blockElement.addEventListener("dragstart" ,onDragStart);
+  blockElement.setAttribute('class',`${isAlignEnd()?"-align--end":""} ${isAlignCenter()?"-align--center":""} block`);
 
  
  // block.setAttribute('class','block')
- root.appendChild(block);
+ root.appendChild(blockElement);
  
  }
 
