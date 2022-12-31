@@ -1,19 +1,10 @@
-import Block1 from './components/Blocks/Block1';
-import { Block10 } from './components/Blocks/Block10';
-import { Block11 } from './components/Blocks/Block11';
-import {Block12} from './components/Blocks/Block12';
-import { Block13 } from './components/Blocks/Block13';
-import { Block14 } from './components/Blocks/Block14';
-import { Block2 } from './components/Blocks/Block2';
-import { Block3 } from './components/Blocks/Block3';
-import { Block4 } from './components/Blocks/Block4';
-import { Block5 } from './components/Blocks/Block5';
-import { Block6 } from './components/Blocks/Block6';
-import Block7 from './components/Blocks/Block7';
-import { Block8 } from './components/Blocks/Block8';
-import { Block9 } from './components/Blocks/Block9';
+
+import { Block } from './components/Blocks/Block';
+
 
 import  './styles/style.css';
+import { fillBlock } from './utils/fillBlock';
+import { overBlock } from './utils/overBlock';
 export const root=document.getElementById('root')  as HTMLElement;
 
 export const diff={
@@ -26,12 +17,10 @@ export const diff={
 }
 export const blockInfo={
    block:null,
-   fillFunc:null,
-   overFunc:null,
-   setter:function(block:HTMLDivElement,fillFunc:(x:number,y:number)=>void,overFunc:(x:number,y:number)=>void){
+   shape:null,
+   setter:function(block:HTMLDivElement,shape:number[][]){
      this.block=block;
-     this.fillFunc=fillFunc;
-     this.overFunc=overFunc;
+     this.shape=shape;
    }
 }
 export const boardState = Array.from(Array(10), () => Array(10).fill(0));
@@ -44,8 +33,7 @@ function Board (){
     const mainY=e.y-diff.y;
     const x=Math.trunc(mainX/40);
     const y=Math.trunc(mainY/40);
-    console.log(x,y);
-   blockInfo.fillFunc(x,y);
+   fillBlock(x,y,blockInfo.shape);
  }
  const onDragOver=(e)=>{
  e.preventDefault();
@@ -57,10 +45,9 @@ function Board (){
  const mainY=e.y-diff.y;
  const x=Math.trunc(mainX/40);
  const y=Math.trunc(mainY/40);
- 
-// main block 좌표가 속해있는 board 좌표
 
-blockInfo.overFunc(x,y);
+// main block 좌표가 속해있는 board 좌표
+ overBlock(x,y,blockInfo.shape);
 
  
 
@@ -104,20 +91,20 @@ function render(){
   const blockContainer=document.createElement('div');
   
   
- /* Block1();
- Block2();
-Block3();
-  Block4();
-  Block5();
-Block6();
- Block7();
- Block8();
- Block9();
-  Block10(); */
-   Block11(); 
-   Block12();
-  Block13();
-  Block14();
+Block([[1],[1],[1]]);
+ Block([[1,1,1]]);
+Block([[0,1],[1,1]]);
+  Block([[1,0],[1,1]]);
+  Block([[1,1],[1,0]]);
+Block([[1,1],[1,1]]);
+ Block([[1],[1]]);
+ /*Block([[1,1],[0,1],[0,1]]);
+ Block([[1,1,1],[1,1,1],[1,1,1]]);
+  Block([[0,0,1],[0,0,1],[1,1,1]]); 
+   Block([[1]]); 
+   Block([[1,1]]);
+  Block([[1,1,1,1,1]]);
+  Block([[1,1],[0,1]]);*/
   const blocks=document.querySelectorAll('.block');
 
   blocks.forEach((b)=> blockContainer.appendChild(b));

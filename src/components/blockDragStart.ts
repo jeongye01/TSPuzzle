@@ -9,9 +9,9 @@ export const calcBlockOriginPos=(offsetX,offsetY,blockShape:number[][])=>{
    
 }
 
-export const statesSetter=(diffX,diffY,block,fillBlock,overBlock)=>{
+export const statesSetter=(diffX,diffY,block,blockShape)=>{
     const bindDiffSetter=diff.setter.bind(diff);
     bindDiffSetter(diffX,diffY)
     const bindBlockSetter=blockInfo.setter.bind(blockInfo);
-    bindBlockSetter(block,fillBlock,overBlock);
+    bindBlockSetter(block,blockShape);
 }
