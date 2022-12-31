@@ -117,7 +117,7 @@ Block6();
   Block10(); 
    Block11(); 
    Block12();
-  Block13(diff.setter,blockInfo.setter);
+  Block13();
   Block14();
   const blocks=document.querySelectorAll('.block');
 
