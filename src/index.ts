@@ -106,6 +106,8 @@ Block([[1,1],[1,1]]);
   Block([[1,1,1,1,1]]);
   Block([[1,1],[0,1]]);
   Block([[1,1,1,1]]);
+  Block([[1],[1],[1],[1]]);
+  Block([[1,1,1],[1,0,0],[1,0,0]]);
   const blocks=document.querySelectorAll('.block');
 
   blocks.forEach((b)=> blockContainer.appendChild(b));
@@ -114,6 +116,7 @@ Block([[1,1],[1,1]]);
   blockContainer.style.width="full";
   blockContainer.style.marginTop="50px";
   blockContainer.style.gap="20px";
+
 
   root.appendChild(blockContainer);
   
