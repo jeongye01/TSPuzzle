@@ -104,20 +104,20 @@ function render(){
   const blockContainer=document.createElement('div');
   
   
- Block1();
+ /* Block1();
  Block2();
 Block3();
   Block4();
   Block5();
-/*Block6();
+Block6();
  Block7();
  Block8();
  Block9();
-  Block10(); 
+  Block10(); */
    Block11(); 
    Block12();
   Block13();
-  Block14();*/
+  Block14();
   const blocks=document.querySelectorAll('.block');
 
   blocks.forEach((b)=> blockContainer.appendChild(b));

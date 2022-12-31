@@ -35,7 +35,7 @@ export const fillBlock =(x:number,y:number)=>{
    console.log(boardState);
    for(let ox=0; ox<blockShape[0].length;ox++){
       for(let oy=0; oy<blockShape.length;oy++){
-         if(boardState[y+oy-1][x+ox]) return;
+         if(boardState[y+oy-1][x+ox]&& blockShape[oy][ox]) return;
       }
    }
    for(let ox=0; ox<blockShape[0].length;ox++){
@@ -53,7 +53,7 @@ export const overBlock=(x:number,y:number)=>{
    if(isOutOfRange(x,y,blockShape))return;
     for(let ox=0; ox<blockShape[0].length;ox++){
       for(let oy=0; oy<blockShape.length;oy++){
-         if(boardState[y+oy-1][x+ox]) return;
+         if(boardState[y+oy-1][x+ox]&& blockShape[oy][ox]) return;
       }
    }
 
