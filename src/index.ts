@@ -20,7 +20,6 @@ export const diff={
   x:0,
   y:0,
   setter:function(diffX:number,diffY:number){
-    console.log(diffX,diffY,"qwer");
     this.x=diffX;
     this.y=diffY;
   }
@@ -110,7 +109,7 @@ function render(){
 Block3();
   Block4();
   Block5();
-Block6();
+/*Block6();
  Block7();
  Block8();
  Block9();
@@ -118,7 +117,7 @@ Block6();
    Block11(); 
    Block12();
   Block13();
-  Block14();
+  Block14();*/
   const blocks=document.querySelectorAll('.block');
 
   blocks.forEach((b)=> blockContainer.appendChild(b));

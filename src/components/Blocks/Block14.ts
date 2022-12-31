@@ -1,6 +1,7 @@
 import { blockInfo, boardState, diff, root } from "../..";
 import BlockGenerator from "../BlockGenerator";
 import { statesSetter,calcBlockOriginPos } from "../blockDragStart";
+import { isOutOfRange } from "../../utils/isOutOfRange";
 
 const blockShape=[[1,1],[0,1]];
 export function Block14 (){
@@ -25,9 +26,13 @@ export function Block14 (){
  root.appendChild(block);
  
  }
+
 export const fillBlock =(x:number,y:number)=>{
 console.log(x,y);
-if(x-1<0 || y+1>9)return;
+
+if(isOutOfRange(x,y,blockShape))return;
+// if(x-1<0 || y+1>9)return;
+
 console.log(boardState);
 for(let ox=0; ox<blockShape[0].length;ox++){
   for(let oy=0; oy<blockShape.length;oy++){
@@ -48,8 +53,9 @@ for(let oy=0; oy<blockShape.length;oy++){
 }
 
 export const overBlock=(x:number,y:number)=>{
-  if(x-1<0 || y+1>9)return;
-  for(let ox=0; ox<blockShape[0].length;ox++){
+  if(isOutOfRange(x,y,blockShape))return;
+
+ for(let ox=0; ox<blockShape[0].length;ox++){
     for(let oy=0; oy<blockShape.length;oy++){
       if(boardState[y+oy][x+ox-1] && blockShape[oy][ox] ) return;
     }
