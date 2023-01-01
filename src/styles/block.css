@@ -4,3 +4,7 @@
 }
 
 
+.hide {
+    transition: 0.001s;
+    transform: translateX(-9999px);
+}

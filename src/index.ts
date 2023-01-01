@@ -55,6 +55,7 @@ function Board (){
  allTileOver.forEach((tileOver)=>{
    tileOver.classList.remove('board__tile--over');
  });
+
  // 보드 상에서의 x,y좌표
  const {x,y}=calcOriginTileBoardIndex(e.x-board.getBoundingClientRect().left,e.y-board.getBoundingClientRect().top);
 

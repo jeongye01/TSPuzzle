@@ -19,7 +19,7 @@ export const fillBlock =(x:number,y:number)=>{
              document.getElementById(`${ox+getLeftEnd(x,colLength)}+${oy+getUpEnd(y,rowLength)}`).classList.remove('board__tile--over');
         }
         }
-
+    block.element.remove();
 }
 
 
