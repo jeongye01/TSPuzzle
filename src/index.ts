@@ -5,6 +5,7 @@ import { BLOCK_SHAPES } from './constants/BlockShapes';
 
 import  './styles/style.css';
 import { fillBlock } from './utils/fillBlock';
+import { generateRandomBlocks } from './utils/generateRandomBlocks';
 import { overBlock } from './utils/overBlock';
 export const root=document.getElementById('root')  as HTMLElement;
 
@@ -105,11 +106,8 @@ function render(){
   tileSize.setter(originTile);
   const blockContainer=document.createElement('div');
  
-// 1x1
- for(let i=0;i<3;i++){
-  Block(BLOCK_SHAPES[Math.trunc(Math.random()*31)]); 
- }
 
+  generateRandomBlocks();
 
   const blocks=document.querySelectorAll('.block');
 
