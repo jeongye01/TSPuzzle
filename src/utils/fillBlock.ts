@@ -18,8 +18,8 @@ export const fillBlock =(x:number,y:number)=>{
             if(!blockShape[oy][ox]) continue;
             console.log(ox+getLeftEnd(x,colLength));
              boardState[oy+getUpEnd(y,rowLength)][ox+getLeftEnd(x,colLength)]=1;
-             document.getElementById(`${ox+getLeftEnd(x,colLength)}+${oy+getUpEnd(y,rowLength)}`).classList.add('tile-filled');
-             document.getElementById(`${ox+getLeftEnd(x,colLength)}+${oy+getUpEnd(y,rowLength)}`).classList.remove('tile-over');
+             document.getElementById(`${ox+getLeftEnd(x,colLength)}+${oy+getUpEnd(y,rowLength)}`).classList.add('board__tile--filled');
+             document.getElementById(`${ox+getLeftEnd(x,colLength)}+${oy+getUpEnd(y,rowLength)}`).classList.remove('board__tile--over');
         }
         }
 

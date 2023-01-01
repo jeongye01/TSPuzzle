@@ -44,9 +44,9 @@ function Board (){
  }
  const onDragOver=(e)=>{
  e.preventDefault();
- const allTileOver=document.querySelectorAll('.tile-over')
+ const allTileOver=document.querySelectorAll('.board__tile--over')
  allTileOver.forEach((tileOver)=>{
-   tileOver.classList.remove('tile-over');
+   tileOver.classList.remove('board__tile--over');
  });
  // 보드 상에서의 x,y좌표
  const {x,y}=calcOriginTileBoardIndex(e.x-board.getBoundingClientRect().left,e.y-board.getBoundingClientRect().top);
@@ -62,13 +62,13 @@ function Board (){
  // 10*10 크기의 보드생성
  [1,1,1,1,1,1,1,1,1,1].forEach((_,row)=>{
    const rowContainer=document.createElement('div');
-   rowContainer.setAttribute('class','row-container');
+   rowContainer.setAttribute('class','board__row');
    [1,1,1,1,1,1,1,1,1,1].forEach((_,col)=>{
    
      const tile=document.createElement('div');
-     tile.setAttribute('class','tile');
+     tile.setAttribute('class','board__tile');
      if(boardState[col][row]){
-      tile.classList.add('tile-filled')
+      tile.classList.add('board__tile--filled')
      }
      tile.id=`${col}+${row}`;
      tile.dataset.x=col+'';

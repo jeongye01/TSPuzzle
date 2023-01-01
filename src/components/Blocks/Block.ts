@@ -5,29 +5,24 @@ import { blockStateSetter,calcBlockOriginPos } from "../blockDragStart";
 
 export function Block (blockShape:number[][]){
  
-const isAlignEnd=()=>{
-  let result=false;
+const getAlignItemState=()=>{
+  let alignItemState='start';
   for(let i=0;i<blockShape.length;i++){
+    console.log(i);
     if(blockShape[i][0]===0){
-      result=true;
-      break;
+      alignItemState="end";
+      if(blockShape[i][blockShape[0].length-1]===0){
+        alignItemState="center";
+        break;
+      }
+      
     }
   }
-
-  return result;
+ console.log(alignItemState)
+  return alignItemState;
 }
  
-const isAlignCenter=()=>{
-  let result=false;
-  for(let i=0;i<blockShape.length;i++){
-    if(blockShape[i][blockShape[0].length-1]===0 && blockShape[i][0]===0){
-      result=true;
-      break;
-    }
-  }
-  
-  return result;
-}
+
   const blockElement=document.createElement('div');
   
   
@@ -41,8 +36,9 @@ const isAlignCenter=()=>{
 
   blockElement.draggable=true;
   blockElement.addEventListener("dragstart" ,onDragStart);
-  blockElement.setAttribute('class',`${isAlignEnd()?"-align--end":""} ${isAlignCenter()?"-align--center":""} block`);
-
+  blockElement.setAttribute('class','block');
+  blockElement.style.alignItems=getAlignItemState();
+console.log(blockElement.style.alignItems,"asdlgn");
  
  // block.setAttribute('class','block')
  root.appendChild(blockElement);
