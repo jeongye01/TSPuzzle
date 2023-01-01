@@ -5,6 +5,6 @@
 
 
 .hide {
-    transition: 0.001s;
+    transition: 0.00001s;
     transform: translateX(-9999px);
 }

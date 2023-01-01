@@ -1,5 +1,6 @@
-import { boardState,block,distanceFromOrigin } from "..";
+import { boardState,block,distanceFromOrigin,generatedBlocks } from "..";
 import { getLeftEnd, getUpEnd } from "./blockEnds";
+import { generateRandomBlocks } from "./generateRandomBlocks";
 import { isBlockOverlapping } from "./isBlockOverlapping";
 import { isOutOfRange } from "./isOutOfRange";
 
@@ -19,7 +20,11 @@ export const fillBlock =(x:number,y:number)=>{
              document.getElementById(`${ox+getLeftEnd(x,colLength)}+${oy+getUpEnd(y,rowLength)}`).classList.remove('board__tile--over');
         }
         }
+        generatedBlocks.removeOne();
     block.element.remove();
+    if(!generatedBlocks.leftCount){
+        generateRandomBlocks();
+    }
 }
 
 
