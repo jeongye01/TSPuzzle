@@ -10,10 +10,10 @@
 
 
 .board__tile--filled {
-    background-color: var(--red);
+    background-color: green;
 }
 .board__tile--over {
-    background-color: green;
+    background-color: orange;
 }
 .board__row{
   
