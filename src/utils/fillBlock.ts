@@ -20,10 +20,33 @@ export const fillBlock =(x:number,y:number)=>{
         }
         }
         generatedBlocks.removeOne();
-    block.element.remove();
-    if(!generatedBlocks.leftCount){
-        generateRandomBlocks();
+block.element.remove();
+if(!generatedBlocks.leftCount){
+    generateRandomBlocks();
+}
+let allFilledRows=[];
+boardState.forEach((row,rowIdx)=>{
+    let thisRowAllFilled=true;
+    row.forEach((col,colIdx)=>{
+      if(col===0)thisRowAllFilled=false;
+
+    })
+    if(thisRowAllFilled){
+        allFilledRows.push(rowIdx);
     }
+});
+if(allFilledRows.length){
+      for(let i=0;i<allFilledRows.length;i++){
+        for(let j=0;j<boardState.length;j++){
+           boardState[allFilledRows[i]][j]=0;
+           document.getElementById(`${j}+${allFilledRows[i]}`).classList.remove('board__tile--filled');
+
+      }
+    
+    }
+}
+console.log(allFilledRows);
+console.log(boardState);
 }
 
 
