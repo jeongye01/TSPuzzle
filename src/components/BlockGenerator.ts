@@ -6,7 +6,7 @@ export default function BlockGenerator (block:HTMLDivElement,blockShape:number[]
     row.forEach((b)=>
       { if(b){
         const tile=document.createElement('div');  
-    tile.setAttribute('class','tile');
+    tile.setAttribute('class','board__tile');
       blockRow.appendChild(tile)
       blockRow.style.display="flex"
       }

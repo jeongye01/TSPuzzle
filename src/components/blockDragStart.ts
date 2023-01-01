@@ -1,10 +1,12 @@
-import { block, distanceFromOrigin} from "..";
+import { block, distanceFromOrigin, tileSize} from "..";
+
+
 
 export const calcBlockOriginPos=(offsetX,offsetY,blockShape:number[][])=>{
-     //orgin block 좌표와 마우스 좌표 차이 계산
-     console.log(offsetX,offsetY)
-     const originX=offsetX- blockShape[0].length*20;
-     const originY= offsetY-blockShape.length*20;
+
+     const halfTileSize=(tileSize.value/2);
+     const originX=offsetX- blockShape[0].length*halfTileSize;
+     const originY= offsetY-blockShape.length*halfTileSize;
      return {originX,originY};
    
 }

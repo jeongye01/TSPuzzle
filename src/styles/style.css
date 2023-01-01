@@ -1,4 +1,6 @@
 @import "reset.css";
+@import "board.css";
+@import "block.css";
 
 :root {
     --main-color: red;
@@ -11,7 +13,7 @@
 
 html{
     font-family: 'Noto Sans KR', sans-serif;
-    font-size:62.5%;
+    font-size:50%;
 }
 
 * {
@@ -19,51 +21,13 @@ html{
 }
 
 #root{
- width:100vw;
- height:100vh;
+  width:100vw;
+  height:100vh;
   display: flex;
   align-items: center;
   justify-content:center;
   flex-direction: column;
 }
 
-.row-container{
-  
-    display: flex;
-}
-.tile {
-    background-color: var(--board-innerBg);
-    min-width: 40px;
-    min-height: 40px;
-    width: 40px;
-    height: 40px;
-    border-radius: 5px;
-    border: 0.5px solid white;
-}
 
 
-.tile-filled {
-    background-color: var(--red);
-}
-.tile-over {
-    background-color: green;
-}
-
-.block{
-    display:flex;
-    flex-direction: column;
-}
-
-
-.-align--end{
-   
-  
-   align-items: end;
-    
-}
-.-align--center{
-   
-  
-    align-items: center;
-     
- }

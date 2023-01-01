@@ -5,14 +5,15 @@ import { BLOCK_SHAPES } from './constants/BlockShapes';
 
 import  './styles/style.css';
 import { fillBlock } from './utils/fillBlock';
+import { generateRandomBlocks } from './utils/generateRandomBlocks';
 import { overBlock } from './utils/overBlock';
 export const root=document.getElementById('root')  as HTMLElement;
 
 export const calcOriginTileBoardIndex=(mouseX:number,mouseY:number)=>{
   const originPosX=mouseX-distanceFromOrigin.x;
   const originPosY=mouseY-distanceFromOrigin.y;
-  const x=Math.trunc(originPosX/40); // 보드 상에서의 x좌표
-  const y=Math.trunc(originPosY/40); // 보드 상에셔의 y좌표
+  const x=Math.trunc(originPosX/tileSize.value); // 보드 상에서의 x좌표
+  const y=Math.trunc(originPosY/tileSize.value); // 보드 상에셔의 y좌표
   return {x,y};
 }
 
@@ -24,6 +25,12 @@ export const distanceFromOrigin={
     this.y=y;
   }
 }
+export const tileSize={
+  value:null,
+  setter:function(value:number){
+    this.value=value;
+  }
+};
 
 export const block={
    element:null,
@@ -44,9 +51,9 @@ function Board (){
  }
  const onDragOver=(e)=>{
  e.preventDefault();
- const allTileOver=document.querySelectorAll('.tile-over')
+ const allTileOver=document.querySelectorAll('.board__tile--over')
  allTileOver.forEach((tileOver)=>{
-   tileOver.classList.remove('tile-over');
+   tileOver.classList.remove('board__tile--over');
  });
  // 보드 상에서의 x,y좌표
  const {x,y}=calcOriginTileBoardIndex(e.x-board.getBoundingClientRect().left,e.y-board.getBoundingClientRect().top);
@@ -62,13 +69,13 @@ function Board (){
  // 10*10 크기의 보드생성
  [1,1,1,1,1,1,1,1,1,1].forEach((_,row)=>{
    const rowContainer=document.createElement('div');
-   rowContainer.setAttribute('class','row-container');
+   rowContainer.setAttribute('class','board__row');
    [1,1,1,1,1,1,1,1,1,1].forEach((_,col)=>{
    
      const tile=document.createElement('div');
-     tile.setAttribute('class','tile');
+     tile.setAttribute('class','board__tile');
      if(boardState[col][row]){
-      tile.classList.add('tile-filled')
+      tile.classList.add('board__tile--filled')
      }
      tile.id=`${col}+${row}`;
      tile.dataset.x=col+'';
@@ -83,7 +90,9 @@ function Board (){
    
  });
   board.id='board';
-  console.log(board)
+ 
+    
+   
  root.appendChild(board);
 }
 
@@ -93,13 +102,12 @@ function Board (){
 function render(){
  
   Board();
+  const originTile=document.getElementById('0+0').clientWidth;
+  tileSize.setter(originTile);
   const blockContainer=document.createElement('div');
  
-// 1x1
- for(let i=0;i<3;i++){
-  Block(BLOCK_SHAPES[Math.trunc(Math.random()*31)]); 
- }
 
+  generateRandomBlocks();
 
   const blocks=document.querySelectorAll('.block');
 
