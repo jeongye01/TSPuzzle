@@ -1,11 +1,11 @@
 .board__tile {
     background-color: var(--board-innerBg);
-    min-width: 40px;
-    min-height: 40px;
-    width: 40px;
-    height: 40px;
-    border-radius: 5px;
-    border: 0.5px solid white;
+    min-width: 4rem;
+    min-height: 4rem;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 0.5rem;
+    border: 0.05rem solid white;
 }
 
 

@@ -8,7 +8,6 @@ export function Block (blockShape:number[][]){
 const getAlignItemState=()=>{
   let alignItemState='start';
   for(let i=0;i<blockShape.length;i++){
-    console.log(i);
     if(blockShape[i][0]===0){
       alignItemState="end";
       if(blockShape[i][blockShape[0].length-1]===0){
@@ -18,7 +17,6 @@ const getAlignItemState=()=>{
       
     }
   }
- console.log(alignItemState)
   return alignItemState;
 }
  
@@ -38,7 +36,6 @@ const getAlignItemState=()=>{
   blockElement.addEventListener("dragstart" ,onDragStart);
   blockElement.setAttribute('class','block');
   blockElement.style.alignItems=getAlignItemState();
-console.log(blockElement.style.alignItems,"asdlgn");
  
  // block.setAttribute('class','block')
  root.appendChild(blockElement);

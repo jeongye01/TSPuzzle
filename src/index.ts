@@ -11,8 +11,8 @@ export const root=document.getElementById('root')  as HTMLElement;
 export const calcOriginTileBoardIndex=(mouseX:number,mouseY:number)=>{
   const originPosX=mouseX-distanceFromOrigin.x;
   const originPosY=mouseY-distanceFromOrigin.y;
-  const x=Math.trunc(originPosX/40); // 보드 상에서의 x좌표
-  const y=Math.trunc(originPosY/40); // 보드 상에셔의 y좌표
+  const x=Math.trunc(originPosX/tileSize.value); // 보드 상에서의 x좌표
+  const y=Math.trunc(originPosY/tileSize.value); // 보드 상에셔의 y좌표
   return {x,y};
 }
 
@@ -24,6 +24,12 @@ export const distanceFromOrigin={
     this.y=y;
   }
 }
+export const tileSize={
+  value:null,
+  setter:function(value:number){
+    this.value=value;
+  }
+};
 
 export const block={
    element:null,
@@ -83,7 +89,9 @@ function Board (){
    
  });
   board.id='board';
-  console.log(board)
+ 
+    
+   
  root.appendChild(board);
 }
 
@@ -93,6 +101,8 @@ function Board (){
 function render(){
  
   Board();
+  const originTile=document.getElementById('0+0').clientWidth;
+  tileSize.setter(originTile);
   const blockContainer=document.createElement('div');
  
 // 1x1
