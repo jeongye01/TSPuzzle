@@ -40,6 +40,17 @@ export const block={
      this.shape=shape;
    }
 }
+export const generatedBlocks={
+  leftCount:null,
+  setter:function(leftCount:number){
+    this.leftCount=leftCount;
+  },
+  removeOne:function(){
+    this.leftCount-=1;
+  }
+}
+
+
 export const boardState = Array.from(Array(10), () => Array(10).fill(0));
 const board=document.createElement('div');
 function Board (){
@@ -55,6 +66,7 @@ function Board (){
  allTileOver.forEach((tileOver)=>{
    tileOver.classList.remove('board__tile--over');
  });
+
  // 보드 상에서의 x,y좌표
  const {x,y}=calcOriginTileBoardIndex(e.x-board.getBoundingClientRect().left,e.y-board.getBoundingClientRect().top);
 
@@ -100,26 +112,22 @@ function Board (){
 
 
 function render(){
- 
+  const blockContainer=document.createElement('div');
   Board();
   const originTile=document.getElementById('0+0').clientWidth;
   tileSize.setter(originTile);
-  const blockContainer=document.createElement('div');
- 
-
-  generateRandomBlocks();
-
-  const blocks=document.querySelectorAll('.block');
-
-  blocks.forEach((b)=> blockContainer.appendChild(b));
 
   blockContainer.style.display="flex";
   blockContainer.style.width="full";
   blockContainer.style.marginTop="50px";
   blockContainer.style.gap="20px";
-
-
+  blockContainer.id="blockContainer";
   root.appendChild(blockContainer);
+  generateRandomBlocks();
+
+ 
+
+
   
 }
 
