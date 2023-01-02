@@ -25,15 +25,26 @@ if(!generatedBlocks.leftCount){
     generateRandomBlocks();
 }
 let allFilledRows=[];
+let allFilledCols=[0,1,2,3,4,5,6,7,8,9];
+// TODO: 변수 알아먹기 쉽게 바꾸기
 boardState.forEach((row,rowIdx)=>{
     let thisRowAllFilled=true;
     row.forEach((col,colIdx)=>{
-      if(col===0)thisRowAllFilled=false;
+      if(col===0){
+        thisRowAllFilled=false;
+        if(allFilledCols.indexOf(colIdx)>-1){
+        allFilledCols.splice(allFilledCols.indexOf(colIdx),1);
+        }
+      
+        
+      }
+      
 
     })
     if(thisRowAllFilled){
         allFilledRows.push(rowIdx);
     }
+   
 });
 if(allFilledRows.length){
       for(let i=0;i<allFilledRows.length;i++){
@@ -45,8 +56,19 @@ if(allFilledRows.length){
     
     }
 }
-console.log(allFilledRows);
+console.log(allFilledCols, "allFilledCols");
 console.log(boardState);
+if(allFilledCols.length){
+    for(let i=0;i<allFilledCols.length;i++){
+      for(let j=0;j<boardState.length;j++){
+         boardState[j][allFilledCols[i]]=0;
+         document.getElementById(`${allFilledCols[i]}+${j}`).classList.remove('board__tile--filled');
+
+    }
+  
+  }
+}
+
 }
 
 
