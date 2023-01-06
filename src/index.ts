@@ -31,7 +31,12 @@ export const tileSize={
     this.value=value;
   }
 };
-
+export const point={
+  value:0,
+  setter:function(newPoint:number){
+    this.value+=newPoint;
+  }
+}
 export const block={
    element:null,
    shape:null,
@@ -112,6 +117,10 @@ function Board (){
 
 
 function render(){
+  const pointText=document.createElement('span');
+  pointText.innerText=point.value+'';
+  pointText.style.fontSize="2.4rem";
+  root.appendChild(pointText);
   const blockContainer=document.createElement('div');
   Board();
   const originTile=document.getElementById('0+0').clientWidth;
@@ -123,6 +132,7 @@ function render(){
   blockContainer.style.gap="20px";
   blockContainer.id="blockContainer";
   root.appendChild(blockContainer);
+
   generateRandomBlocks();
 
  
