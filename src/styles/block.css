@@ -8,3 +8,7 @@
     transition: 0.00001s;
     transform: translateX(-9999px);
 }
+
+.block__tile--placeable{
+    background-color: gray;
+}

@@ -43,10 +43,15 @@ export const point={
 export const block={
    element:null,
    shape:null,
+   isPlaceable:true,
    setter:function(element:HTMLDivElement,shape:number[][]){
      this.element=element;
      this.shape=shape;
-   }
+   },
+   setIsPlaceable:function(isPlaceable:boolean){
+    this.isPlaceable=isPlaceable;
+  },
+
 }
 export const generatedBlocks={
   leftCount:null,

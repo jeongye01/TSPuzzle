@@ -1,4 +1,4 @@
-import {  root,block } from "../..";
+import {  root,block, boardState } from "../..";
 import BlockGenerator from "../BlockGenerator";
 import { blockStateSetter,calcBlockOriginPos } from "../blockDragStart";
 
@@ -33,15 +33,15 @@ const getAlignItemState=()=>{
       console.log("drag end");
       block.element.classList.remove('hide');
   }
-     
+
    
   BlockGenerator(blockElement,blockShape);
-
   blockElement.draggable=true;
   blockElement.addEventListener("dragstart" ,onDragStart);
   blockElement.addEventListener("dragend" ,onDragEnd);
   blockElement.setAttribute('class','block');
   blockElement.style.alignItems=getAlignItemState();
+  
  
  // block.setAttribute('class','block')
  root.appendChild(blockElement);
