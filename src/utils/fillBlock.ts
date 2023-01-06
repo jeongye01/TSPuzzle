@@ -1,4 +1,4 @@
-import { boardState,block,distanceFromOrigin,generatedBlocks } from "..";
+import { boardState,block,distanceFromOrigin,generatedBlocks, point } from "..";
 import { getLeftEnd, getUpEnd } from "./blockEnds";
 import { generateRandomBlocks } from "./generateRandomBlocks";
 import { isBlockOverlapping } from "./isBlockOverlapping";
@@ -25,11 +25,17 @@ if(!generatedBlocks.leftCount){
     generateRandomBlocks();
 }
 let allFilledRows=[];
+let allFilledCols=[0,1,2,3,4,5,6,7,8,9];
 boardState.forEach((row,rowIdx)=>{
     let thisRowAllFilled=true;
     row.forEach((col,colIdx)=>{
-      if(col===0)thisRowAllFilled=false;
-
+      if(col===0){
+        thisRowAllFilled=false
+        if(allFilledCols.indexOf(colIdx)!==-1){
+            allFilledCols.splice(allFilledCols.indexOf(colIdx),1);
+        }
+      };
+ 
     })
     if(thisRowAllFilled){
         allFilledRows.push(rowIdx);
@@ -44,8 +50,45 @@ if(allFilledRows.length){
       }
     
     }
+   
 }
-console.log(allFilledRows);
+if(allFilledCols.length){
+    for(let i=0;i<allFilledCols.length;i++){
+      for(let j=0;j<boardState.length;j++){
+         boardState[j][allFilledCols[i]]=0;
+         document.getElementById(`${allFilledCols[i]}+${j}`).classList.remove('board__tile--filled');
+
+    }
+  
+  }
+  
+}
+
+const filledLineCtn=allFilledCols.length+allFilledRows.length;
+// 점수 올리기 
+if(filledLineCtn){
+    let newPoint=0;
+   if(filledLineCtn===1){
+    newPoint=10;
+   }
+   if(filledLineCtn===2){
+    newPoint=20;
+   }
+   if(filledLineCtn===3){
+    newPoint=60;
+   }
+   if(filledLineCtn===4){
+    newPoint=100;
+   }
+   if(filledLineCtn===5){
+    newPoint=200;
+   }
+   
+
+   point.setter(newPoint);
+}
+
+console.log(allFilledRows,allFilledCols);
 console.log(boardState);
 }
 
