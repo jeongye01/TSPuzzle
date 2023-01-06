@@ -27,14 +27,17 @@ export const distanceFromOrigin={
 }
 export const tileSize={
   value:null,
+ 
   setter:function(value:number){
     this.value=value;
   }
 };
 export const point={
   value:0,
+  element:null,
   setter:function(newPoint:number){
     this.value+=newPoint;
+    this.element.innerText=this.value;
   }
 }
 export const block={
@@ -120,6 +123,7 @@ function render(){
   const pointText=document.createElement('span');
   pointText.innerText=point.value+'';
   pointText.style.fontSize="2.4rem";
+  point.element=pointText;
   root.appendChild(pointText);
   const blockContainer=document.createElement('div');
   Board();
