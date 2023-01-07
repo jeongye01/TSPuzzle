@@ -3,6 +3,7 @@ import { isPlaceable } from "../utils/isPlaceable";
 
 
 
+
 export default function BlockGenerator (blockElement:HTMLDivElement,blockShape:number[][]){
 
 
@@ -14,7 +15,7 @@ export default function BlockGenerator (blockElement:HTMLDivElement,blockShape:n
     row.forEach((b)=>
       { if(b){
         const tile=document.createElement('div');  
-         tile.setAttribute('class','board__tile');
+         tile.setAttribute('class','tile block__tile');
          blockRow.appendChild(tile)
          blockRow.style.display="flex"
       }
