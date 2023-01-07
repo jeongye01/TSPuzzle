@@ -47,12 +47,20 @@ export const block={
    setter:function(element:HTMLDivElement,shape:number[][]){
      this.element=element;
      this.shape=shape;
+
    },
    setIsPlaceable:function(isPlaceable:boolean){
     this.isPlaceable=isPlaceable;
   },
-
-}
+  getTileCtn:function(){
+    let result=0;
+    console.log(this.shape);
+    this.shape.forEach((row)=>row.forEach((val)=>{
+      if(val)result+=1;
+    
+      }));
+      return result;
+  }}
 export const generatedBlocks={
   leftBlockIds:[],
   mapShapeNId:new Map(),

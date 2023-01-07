@@ -66,36 +66,39 @@ if(allFilledCols.length){
 }
 
 const filledLineCtn=allFilledCols.length+allFilledRows.length;
-console.log(filledLineCtn,"라인 수");
+//console.log(filledLineCtn,"라인 수");
 // 점수 올리기 
+console.log(block.getTileCtn(),"타일 수");
+let newPoint=block.getTileCtn();
 if(filledLineCtn){
-    let newPoint=0;
+   
+  
    if(filledLineCtn===1){
-    newPoint=10;
+    newPoint+=10;
    }
    if(filledLineCtn===2){
-    newPoint=30;
+    newPoint+=30;
    }
    if(filledLineCtn===3){
-    newPoint=60;
+    newPoint+=60;
    }
    if(filledLineCtn===4){
-    newPoint=100;
+    newPoint+=100;
    }
    if(filledLineCtn===5){
-    newPoint=200;
+    newPoint+=200;
    }
    
-
-   point.setter(newPoint);
+  
+   
 // console.log("point",newPoint,point.value)  
 }
-
+point.setter(newPoint);
 generatedBlocks.leftBlockIds.forEach((id)=>{
     const leftBlock=document.getElementById(id);
   //  console.log(generatedBlocks.mapShapeNId.get(id),'asdlkfj');
   const result=isPlaceable(leftBlock,generatedBlocks.mapShapeNId.get(id));
-  console.log(result);
+ // console.log(result);
 });
 // console.log(generatedBlocks);
 // console.log(boardState);
