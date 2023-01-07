@@ -1,9 +1,9 @@
 import { boardState,block,distanceFromOrigin,generatedBlocks, point } from "..";
-import { isPlaceable } from "../components/BlockGenerator";
 import { getLeftEnd, getUpEnd } from "./blockEnds";
 import { generateRandomBlocks } from "./generateRandomBlocks";
 import { isBlockOverlapping } from "./isBlockOverlapping";
 import { isOutOfRange } from "./isOutOfRange";
+import { isPlaceable } from "./isPlaceable";
 
 export const fillBlock =(x:number,y:number)=>{
     const {shape:blockShape}= block;
@@ -74,7 +74,7 @@ if(filledLineCtn){
     newPoint=10;
    }
    if(filledLineCtn===2){
-    newPoint=20;
+    newPoint=30;
    }
    if(filledLineCtn===3){
     newPoint=60;
@@ -88,12 +88,12 @@ if(filledLineCtn){
    
 
    point.setter(newPoint);
-   console.log("point",newPoint,point.value)
+// console.log("point",newPoint,point.value)  
 }
-console.log(generatedBlocks.leftBlockIds);
+
 generatedBlocks.leftBlockIds.forEach((id)=>{
     const leftBlock=document.getElementById(id);
-    console.log(generatedBlocks.mapShapeNId.get(id),'asdlkfj');
+  //  console.log(generatedBlocks.mapShapeNId.get(id),'asdlkfj');
   const result=isPlaceable(leftBlock,generatedBlocks.mapShapeNId.get(id));
   console.log(result);
 });
