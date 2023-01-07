@@ -43,18 +43,30 @@ export const point={
 export const block={
    element:null,
    shape:null,
+   isPlaceable:true,
    setter:function(element:HTMLDivElement,shape:number[][]){
      this.element=element;
      this.shape=shape;
-   }
+   },
+   setIsPlaceable:function(isPlaceable:boolean){
+    this.isPlaceable=isPlaceable;
+  },
+
 }
 export const generatedBlocks={
-  leftCount:null,
-  setter:function(leftCount:number){
-    this.leftCount=leftCount;
+  leftBlockIds:[],
+  mapShapeNId:new Map(),
+  mapShape:function(generatedBlockId:string,generatedBlockShape:number[][]){
+    this.mapShapeNId.set(generatedBlockId,generatedBlockShape);
   },
-  removeOne:function(){
-    this.leftCount-=1;
+  addOne:function(generatedBlockId:string){
+    this.leftBlockIds.push(generatedBlockId);
+  },
+  removeOne:function(targetId:string){
+    const targetIdx=this.leftBlockIds.indexOf(targetId);
+    if(targetIdx!==-1){
+      this.leftBlockIds.splice(targetIdx,1);
+    }
   }
 }
 

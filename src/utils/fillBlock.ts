@@ -1,4 +1,5 @@
 import { boardState,block,distanceFromOrigin,generatedBlocks, point } from "..";
+import { isPlaceable } from "../components/BlockGenerator";
 import { getLeftEnd, getUpEnd } from "./blockEnds";
 import { generateRandomBlocks } from "./generateRandomBlocks";
 import { isBlockOverlapping } from "./isBlockOverlapping";
@@ -19,9 +20,9 @@ export const fillBlock =(x:number,y:number)=>{
              document.getElementById(`${ox+getLeftEnd(x,colLength)}+${oy+getUpEnd(y,rowLength)}`).classList.remove('board__tile--over');
         }
         }
-        generatedBlocks.removeOne();
+        generatedBlocks.removeOne(block.element.id);
 block.element.remove();
-if(!generatedBlocks.leftCount){
+if(!generatedBlocks.leftBlockIds.length){
     generateRandomBlocks();
 }
 let allFilledRows=[];
@@ -65,6 +66,7 @@ if(allFilledCols.length){
 }
 
 const filledLineCtn=allFilledCols.length+allFilledRows.length;
+console.log(filledLineCtn,"라인 수");
 // 점수 올리기 
 if(filledLineCtn){
     let newPoint=0;
@@ -86,10 +88,17 @@ if(filledLineCtn){
    
 
    point.setter(newPoint);
+   console.log("point",newPoint,point.value)
 }
-
-console.log(allFilledRows,allFilledCols);
-console.log(boardState);
+console.log(generatedBlocks.leftBlockIds);
+generatedBlocks.leftBlockIds.forEach((id)=>{
+    const leftBlock=document.getElementById(id);
+    console.log(generatedBlocks.mapShapeNId.get(id),'asdlkfj');
+  const result=isPlaceable(leftBlock,generatedBlocks.mapShapeNId.get(id));
+  console.log(result);
+});
+// console.log(generatedBlocks);
+// console.log(boardState);
 }
 
 

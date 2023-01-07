@@ -2,9 +2,17 @@
     display:flex;
     flex-direction: column;
 }
+.block--abled {
+    background-color: green;
+}
+.block--disabled {
+    background-color:red;
+}
+
 
 
 .hide {
     transition: 0.00001s;
     transform: translateX(-9999px);
 }
+
