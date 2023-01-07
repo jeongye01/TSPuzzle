@@ -1,3 +1,5 @@
+
+
 .block{
     display:flex;
     flex-direction: column;
@@ -11,22 +13,25 @@
 
 
 .block__tile{
-    border: 0.05rem solid white;
-    background-color: var(--board-innerBg);
-}
-
-.block__tile2{
-    background-color: #0a6bff;
-    min-width: 4rem;
-    min-height: 4rem;
-    width: 4rem;
-    height: 4rem;
-    border-radius: 0.5rem;
-    border: 0.05rem solid gold;
-    box-shadow: rgba(1,60,136,.5) 0 -1px 3px 0 inset,rgba(0,44,97,.1) 0 3px 6px 0;
+   
+    background-color:white;
+    padding:0.2rem;
+   
+   
    
     
-    transition: all .2s cubic-bezier(.22, .61, .36, 1);
+}
+
+.tile__inner{
+    background: var(--purple);
+
+    border:0.18rem solid gold;
+    width:100%;
+    height:100%;
+    border-radius: 0.4rem;
+
+    box-shadow: rgba(0, 0, 0, 0.25) 0 -0.5rem 0.5rem 0.3rem inset;
+    
 }
 
 

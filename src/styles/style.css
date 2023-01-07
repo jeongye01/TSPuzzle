@@ -3,11 +3,15 @@
 @import "block.css";
 
 :root {
-    --main-color: red;
-    --board-innerBg: #0D1A48;
-    --board-outerBg:#203F82;
-    --red:#ED1A25;
-    --orange:#1E2462;
+    --board-innerBg:#0D1A48; ;
+    --red:#FD2F11;
+    --pink:#FC3891;
+    --blue:#115EF0;
+    --skyblue:#1DC8E7;
+    --yellow:#FFDD0F;
+    --purple:#DB09F0;
+    --green:#39B500;
+
    
 }
 
@@ -31,7 +35,7 @@ html{
 
 .tile{
     
-       
+    border: 0.05rem solid white;
         min-width: 4rem;
         min-height: 4rem;
         width: 4rem;

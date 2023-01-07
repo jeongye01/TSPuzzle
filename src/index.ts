@@ -158,8 +158,14 @@ function render(){
   root.appendChild(blockContainer);
 
   generateRandomBlocks();
+  // TEST TILE TODO: 지우기 
+  const testTile=document.createElement('div');
+  const tileInner=document.createElement('div');
+  testTile.setAttribute('class','tile block__tile');
+  testTile.appendChild(tileInner);
+  tileInner.setAttribute('class','tile__inner')
 
- 
+  root.appendChild(testTile);
 
 
   

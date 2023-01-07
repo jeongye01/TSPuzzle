@@ -1,5 +1,5 @@
 .board__tile {
-    border: 0.05rem solid white;
+   
     background-color: var(--board-innerBg);
 }
 
