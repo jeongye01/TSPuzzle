@@ -54,7 +54,7 @@ export const block={
   },
   getTileCtn:function(){
     let result=0;
-    console.log(this.shape);
+   // console.log(this.shape);
     this.shape.forEach((row)=>row.forEach((val)=>{
       if(val)result+=1;
     
@@ -113,7 +113,7 @@ function Board (){
    [1,1,1,1,1,1,1,1,1,1].forEach((_,col)=>{
    
      const tile=document.createElement('div');
-     tile.setAttribute('class','board__tile');
+     tile.setAttribute('class','tile board__tile');
      if(boardState[col][row]){
       tile.classList.add('board__tile--filled')
      }

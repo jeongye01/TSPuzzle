@@ -13,8 +13,8 @@ import { boardState } from "..";
           for(let by=0;by<blockShape.length;by++){
              // 겹치는 공간이 있음. -> 배치할 수 없음. 
            if(boardState[y+by][x+bx] && blockShape[by][bx] ){
-            console.log(boardState,"보드상태")
-            console.log(boardState[y+by][x+bx] , blockShape[by][bx],y+by,x+by,x,y,"못채움");
+            //console.log(boardState,"보드상태")
+            //console.log(boardState[y+by][x+bx] , blockShape[by][bx],y+by,x+by,x,y,"못채움");
             tmp=false;
            }
           }
@@ -32,7 +32,7 @@ import { boardState } from "..";
         break;
       }
     }
-  const tiles=blockElement.getElementsByClassName('board__tile');
+  const tiles=blockElement.getElementsByClassName('block__tile');
   // console.log(tiles);
   
      Array.prototype.forEach.call(tiles,(tile) => {

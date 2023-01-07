@@ -68,7 +68,7 @@ if(allFilledCols.length){
 const filledLineCtn=allFilledCols.length+allFilledRows.length;
 //console.log(filledLineCtn,"라인 수");
 // 점수 올리기 
-console.log(block.getTileCtn(),"타일 수");
+// console.log(block.getTileCtn(),"타일 수");
 let newPoint=block.getTileCtn();
 if(filledLineCtn){
    
@@ -94,12 +94,20 @@ if(filledLineCtn){
 // console.log("point",newPoint,point.value)  
 }
 point.setter(newPoint);
+let disabledBlockCtn=0;
 generatedBlocks.leftBlockIds.forEach((id)=>{
     const leftBlock=document.getElementById(id);
   //  console.log(generatedBlocks.mapShapeNId.get(id),'asdlkfj');
-  const result=isPlaceable(leftBlock,generatedBlocks.mapShapeNId.get(id));
- // console.log(result);
+  // 비활성화 상태인지 판단하고, 해당 스타일을 입힘. 
+  const placableState=isPlaceable(leftBlock,generatedBlocks.mapShapeNId.get(id));
+  if(!placableState)disabledBlockCtn+=1;
+  
 });
+if(disabledBlockCtn===generatedBlocks.leftBlockIds.length){
+ 
+  console.log("game over",disabledBlockCtn,generatedBlocks.leftBlockIds.length);
+  
+}
 // console.log(generatedBlocks);
 // console.log(boardState);
 }
