@@ -9,11 +9,12 @@
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "plugin:prettier/recommended",
     "prettier",
-    "prettier/@typescript-eslint"
+    "prettier/@typescript-eslint",
+    "airbnb"
   ],
   "parserOptions": {
     "project": "./tsconfig.json",
-    "ecmaVersion": 2018,
+    "ecmaVersion": "latest",
     "sourceType": "module"
   },
   "ignorePatterns": ["dist/", "node_modules/"],
