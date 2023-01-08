@@ -36,7 +36,7 @@ import { boardState } from "..";
   // console.log(tiles);
   
      Array.prototype.forEach.call(tiles,(tile) => {
-       tile.style.backgroundColor=`${result? 'green' : 'gray'}`;
+       tile.style.backgroundColor=`${result? 'inherit' : 'gray'}`;
    })
     // console.log(blockElement.classList);
     // blockElement.setIsPlaceable(result);

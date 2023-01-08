@@ -3,9 +3,14 @@
 .block{
     display:flex;
     flex-direction: column;
+    gap:0.1rem;
+}
+.block > div{
+    
+    gap:0.1rem;
 }
 .block--abled {
-    background-color: green;
+    background-color: inherit;
 }
 .block--disabled {
     background-color:red;
@@ -13,24 +18,18 @@
 
 
 .block__tile{
-   
-    background-color:white;
-    padding:0.2rem;
-   
-   
-   
-    
+   background-color: blue;
+   width:100%;
+    height:100%;
 }
 
 .tile__inner{
-    background: var(--purple);
+   background: var(--green);
 
-    border:0.18rem solid gold;
-    width:100%;
-    height:100%;
-    border-radius: 0.4rem;
+   
+   
 
-    box-shadow: rgba(0, 0, 0, 0.25) 0 -0.5rem 0.5rem 0.3rem inset;
+
     
 }
 

@@ -31,16 +31,18 @@ html{
   align-items: center;
   justify-content:center;
   flex-direction: column;
+  background-color: #292841;
+  
 }
 
 .tile{
     
-    border: 0.05rem solid white;
+   
         min-width: 4rem;
         min-height: 4rem;
         width: 4rem;
         height: 4rem;
-        border-radius: 0.5rem;
+      
 
   
 }
