@@ -43,10 +43,14 @@ export const point={
 export const block={
    element:null,
    shape:null,
+   color:null,
    isPlaceable:true,
    setter:function(element:HTMLDivElement,shape:number[][]){
      this.element=element;
      this.shape=shape;
+     this.color=element.dataset.color;
+     console.log(this.color,"index");
+
 
    },
    setIsPlaceable:function(isPlaceable:boolean){
@@ -158,8 +162,7 @@ function render(){
   root.appendChild(blockContainer);
 
   generateRandomBlocks();
-
- 
+  
 
 
   
@@ -175,3 +178,6 @@ render();
 
 
   
+
+
+//    box-shadow: rgba(0, 0, 0, 0.25) 0 -0.5rem 0.5rem 0.3rem inset;

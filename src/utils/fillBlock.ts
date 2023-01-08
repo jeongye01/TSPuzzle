@@ -7,6 +7,9 @@ import { isPlaceable } from "./isPlaceable";
 
 export const fillBlock =(x:number,y:number)=>{
     const {shape:blockShape}= block;
+  const blockColor=block.color;
+  console.log(blockColor,block);
+  if(blockColor===undefined)return;
     const rowLength=blockShape.length;
     const colLength=blockShape[0].length;
     if(isOutOfRange(x,y,rowLength,colLength))return;
@@ -16,7 +19,7 @@ export const fillBlock =(x:number,y:number)=>{
         for(let oy=0; oy<rowLength;oy++){
             if(!blockShape[oy][ox]) continue;
              boardState[oy+getUpEnd(y,rowLength)][ox+getLeftEnd(x,colLength)]=1;
-             document.getElementById(`${ox+getLeftEnd(x,colLength)}+${oy+getUpEnd(y,rowLength)}`).classList.add('board__tile--filled');
+             document.getElementById(`${ox+getLeftEnd(x,colLength)}+${oy+getUpEnd(y,rowLength)}`).style.backgroundColor=`${blockColor}`;
              document.getElementById(`${ox+getLeftEnd(x,colLength)}+${oy+getUpEnd(y,rowLength)}`).classList.remove('board__tile--over');
         }
         }
@@ -46,7 +49,7 @@ if(allFilledRows.length){
       for(let i=0;i<allFilledRows.length;i++){
         for(let j=0;j<boardState.length;j++){
            boardState[allFilledRows[i]][j]=0;
-           document.getElementById(`${j}+${allFilledRows[i]}`).classList.remove('board__tile--filled');
+           document.getElementById(`${j}+${allFilledRows[i]}`).style.backgroundColor=null;
 
       }
     
@@ -57,7 +60,7 @@ if(allFilledCols.length){
     for(let i=0;i<allFilledCols.length;i++){
       for(let j=0;j<boardState.length;j++){
          boardState[j][allFilledCols[i]]=0;
-         document.getElementById(`${allFilledCols[i]}+${j}`).classList.remove('board__tile--filled');
+         document.getElementById(`${allFilledCols[i]}+${j}`).style.backgroundColor=null;
 
     }
   
@@ -109,7 +112,7 @@ if(disabledBlockCtn===generatedBlocks.leftBlockIds.length){
   
 }
 // console.log(generatedBlocks);
-// console.log(boardState);
+console.log(boardState);
 }
 
 

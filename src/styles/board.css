@@ -1,11 +1,16 @@
+#board{
+
+}
+
+
 .board__tile {
     border: 0.05rem solid white;
-    background-color: var(--board-innerBg);
+    background-color: #1C1B29;
 }
 
 
 .board__tile--filled {
-    background-color: green;
+    background-color: #676FCF;
 }
 .board__tile--over {
     background-color: orange;
