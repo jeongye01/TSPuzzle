@@ -1,50 +1,40 @@
-@import "reset.css";
-@import "board.css";
-@import "block.css";
+@import 'reset.css';
+@import 'board.css';
+@import 'block.css';
 
 :root {
-    --board-innerBg:#0D1A48; ;
-    --red:#FD2F11;
-    --pink:#FC3891;
-    --blue:#115EF0;
-    --skyblue:#1DC8E7;
-    --yellow:#FFDD0F;
-    --purple:#DB09F0;
-    --green:#39B500;
-
-   
+  --board-innerBg: #0d1a48;
+  --red: #fd2f11;
+  --pink: #fc3891;
+  --blue: #115ef0;
+  --skyblue: #1dc8e7;
+  --yellow: #ffdd0f;
+  --purple: #db09f0;
+  --green: #39b500;
 }
 
-html{
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size:62.5%;
+html {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 62.5%;
 }
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-#root{
-  width:100vw;
-  height:100vh;
+#root {
+  width: 100vw;
+  height: 100vh;
   display: flex;
   align-items: center;
-  justify-content:center;
+  justify-content: center;
   flex-direction: column;
   background-color: #292841;
-  
 }
 
-.tile{
-    
-   
-        min-width: 4rem;
-        min-height: 4rem;
-        width: 4rem;
-        height: 4rem;
-      
-
-  
+.tile {
+  min-width: 4rem;
+  min-height: 4rem;
+  width: 4rem;
+  height: 4rem;
 }
-
-

@@ -1,21 +1,17 @@
-#board{
-
+#board {
 }
-
 
 .board__tile {
-    border: 0.05rem solid white;
-    background-color: #1C1B29;
+  border: 0.05rem solid white;
+  background-color: #1c1b29;
 }
-
 
 .board__tile--filled {
-    background-color: #676FCF;
+  background-color: #676fcf;
 }
 .board__tile--over {
-    background-color: orange;
+  background-color: orange;
 }
-.board__row{
-  
-    display: flex;
+.board__row {
+  display: flex;
 }

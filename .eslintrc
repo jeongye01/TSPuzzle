@@ -1,0 +1,33 @@
+{
+  "root": true, //eslint 파일을 프로젝트 디렉토리에서만 찾음.
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:prettier/recommended",
+    "prettier/@typescript-eslint"
+  ],
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "ignorePatterns": ["dist/", "node_modules/"]
+}
+
+/*
+
+
+eslint-config-airbnb-base: 에어비엔비 린트 플러그인
+eslint-config-next: Next.js 전용 린트 플러그인
+eslint-plugin-react: 리액트 전용 플러그인
+eslint-plugin-prettier: 린트 위에 사용할 프리티어 플러그인
+eslint-config-prettier: 요건 린트 설정과 중복되는 부분이 있으면 프리티어 룰에서 제외하는 플러그인
+@typescript-eslint/eslint-plugin: : 타입스크립트 전용 린트
+
+
+
+*/
