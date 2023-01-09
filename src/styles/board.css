@@ -10,7 +10,7 @@
   background-color: #676fcf;
 }
 .board__tile--over {
-  background-color: orange;
+  opacity: 0.5;
 }
 .board__row {
   display: flex;

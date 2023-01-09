@@ -23,6 +23,14 @@ export const distanceFromOrigin = {
     this.y = y;
   },
 };
+export const prevPos = {
+  x: null,
+  y: null,
+  setter: function (x: number, y: number) {
+    this.x = x;
+    this.y = y;
+  },
+};
 export const tileSize = {
   value: null,
 
@@ -88,6 +96,9 @@ const board = document.createElement('div');
 function Board() {
   const onDrop = (e) => {
     e.stopPropagation();
+    const allTileOver = document.getElementsByClassName('board__tile--over');
+    console.log('drop', allTileOver);
+
     // 보드 상에서의 x,y좌표
     const { x, y } = calcOriginTileBoardIndex(
       e.x - board.getBoundingClientRect().left,
@@ -97,18 +108,33 @@ function Board() {
   };
   const onDragOver = (e) => {
     e.preventDefault();
-    const allTileOver = document.querySelectorAll('.board__tile--over');
-    allTileOver.forEach((tileOver) => {
-      tileOver.classList.remove('board__tile--over');
-    });
-
+    console.log('drag endter');
     // 보드 상에서의 x,y좌표
     const { x, y } = calcOriginTileBoardIndex(
       e.x - board.getBoundingClientRect().left,
       e.y - board.getBoundingClientRect().top
     );
+    if (x === prevPos.x && y === prevPos.y) return;
+    console.log(x, prevPos.x, y, prevPos.y);
+    prevPos.setter(x, y);
+    const allTileOver = document.querySelectorAll('.board__tile--over');
+    Array.prototype.forEach.call(allTileOver, (targetTile) => {
+      targetTile.style.backgroundColor = null;
+      targetTile.classList.remove('board__tile--over');
+      console.log(targetTile.style.backgroundColor, 'bgcolor');
+    });
 
     overBlock(x, y);
+  };
+  const onDragLeave = (e) => {
+    e.preventDefault();
+
+    const allTileOver = document.getElementsByClassName('board__tile--over');
+    //  console.log('drag leave', allTileOver);
+    Array.prototype.forEach.call(allTileOver, (targetTile) => {
+      targetTile.style.backgroundColor = null;
+      targetTile.classList.remove('board__tile--over');
+    });
   };
 
   // 10*10 크기의 보드생성
@@ -124,8 +150,10 @@ function Board() {
       tile.id = `${col}+${row}`;
       tile.dataset.x = col + '';
       tile.dataset.y = row + '';
-      tile.addEventListener('dragover', onDragOver);
       tile.addEventListener('drop', onDrop);
+      tile.addEventListener('dragover', onDragOver);
+
+      //    tile.addEventListener('dragleave', onDragLeave);
 
       rowContainer.appendChild(tile);
     });

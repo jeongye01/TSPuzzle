@@ -1,4 +1,4 @@
-import { boardState } from '..';
+import { block, boardState } from '..';
 
 // 들어갈 공간이 한 군데라도 있으면 true
 export const isPlaceable = (
@@ -37,7 +37,10 @@ export const isPlaceable = (
   // console.log(tiles);
 
   Array.prototype.forEach.call(tiles, (tile) => {
-    tile.style.backgroundColor = `${result ? 'inherit' : 'gray'}`;
+    console.log(result);
+    tile.style.backgroundColor = `${
+      result ? blockElement.dataset.color : 'gray'
+    }`;
   });
   // console.log(blockElement.classList);
   // blockElement.setIsPlaceable(result);

@@ -39,7 +39,7 @@ export function Block(blockShape: number[][], id: string) {
   blockElement.setAttribute('class', 'block');
   blockElement.style.alignItems = getAlignItemState();
   blockElement.id = id;
-
+  console.log(blockElement);
   // block.setAttribute('class','block')
   root.appendChild(blockElement);
 }
