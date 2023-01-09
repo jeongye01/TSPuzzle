@@ -27,14 +27,12 @@ export const fillBlock = (x: number, y: number) => {
       boardState[oy + getUpEnd(y, rowLength)][
         ox + getLeftEnd(x, colLength)
       ] = 1;
-      document.getElementById(
+      const targetTile = document.getElementById(
         `${ox + getLeftEnd(x, colLength)}+${oy + getUpEnd(y, rowLength)}`
-      ).style.backgroundColor = `${blockColor}`;
-      document
-        .getElementById(
-          `${ox + getLeftEnd(x, colLength)}+${oy + getUpEnd(y, rowLength)}`
-        )
-        .classList.remove('board__tile--over');
+      );
+      console.log(targetTile);
+      targetTile.classList.remove('board__tile--over');
+      targetTile.style.backgroundColor = `${blockColor}`;
     }
   }
   generatedBlocks.removeOne(block.element.id);

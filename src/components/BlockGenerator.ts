@@ -1,4 +1,3 @@
-import { boardState, block } from '..';
 import { isPlaceable } from '../utils/isPlaceable';
 
 const BLOCK_COLORS = [
@@ -14,12 +13,15 @@ export default function BlockGenerator(
   blockElement: HTMLDivElement,
   blockShape: number[][]
 ) {
+  const blockColor =
+    BLOCK_COLORS[Math.trunc(Math.random() * BLOCK_COLORS.length)];
   blockShape.forEach((row) => {
     const blockRow = document.createElement('div');
     row.forEach((b) => {
       if (b) {
         const tile = document.createElement('div');
         tile.setAttribute('class', 'tile block__tile');
+        tile.style.backgroundColor = blockColor;
         blockRow.appendChild(tile);
         blockRow.style.display = 'flex';
       }
@@ -27,5 +29,6 @@ export default function BlockGenerator(
       blockElement.appendChild(blockRow);
     });
   });
+  blockElement.dataset.color = blockColor;
   isPlaceable(blockElement, blockShape);
 }
