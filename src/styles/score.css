@@ -13,8 +13,10 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-size: 2.4rem;
+  font-family: 'Anton', sans-serif;
 }
 .score__text--current {
   font-size: 2.4rem;
   color: white;
+  font-family: 'Anton', sans-serif;
 }
