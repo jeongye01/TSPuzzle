@@ -1,0 +1,20 @@
+.score {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.score__trophy {
+  width: 5rem;
+}
+
+.score__text--best {
+  background: linear-gradient(to bottom, #ff8c19, #ffe75c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 2.4rem;
+}
+.score__text--current {
+  font-size: 2.4rem;
+  color: white;
+}

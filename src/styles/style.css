@@ -1,9 +1,12 @@
 @import 'reset.css';
 @import 'board.css';
 @import 'block.css';
+@import 'score.css';
 
 :root {
   --board-innerBg: #0d1a48;
+  --bg-outer: #1c1b29;
+  --bg-inner: #292841;
   --red: #fd2f11;
   --pink: #fc3891;
   --blue: #115ef0;
@@ -29,7 +32,7 @@ html {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: #292841;
+  background-color: var(--bg-inner);
 }
 
 .tile {
