@@ -81,22 +81,22 @@ export const fillBlock = (x: number, y: number) => {
   //console.log(filledLineCtn,"라인 수");
   // 점수 올리기
   // console.log(block.getTileCtn(),"타일 수");
-  let newPoint = block.getTileCtn() * 10;
+  let newPoint = block.getTileCtn();
   if (filledLineCtn) {
     if (filledLineCtn === 1) {
-      newPoint += 100;
+      newPoint += 10;
     }
     if (filledLineCtn === 2) {
-      newPoint += 300;
+      newPoint += 30;
     }
     if (filledLineCtn === 3) {
-      newPoint += 600;
+      newPoint += 60;
     }
     if (filledLineCtn === 4) {
-      newPoint += 1000;
+      newPoint += 100;
     }
     if (filledLineCtn === 5) {
-      newPoint += 2000;
+      newPoint += 200;
     }
 
     // console.log("point",newPoint,point.value)

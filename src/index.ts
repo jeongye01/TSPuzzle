@@ -165,11 +165,21 @@ function Board() {
 }
 
 function render() {
-  const pointText = document.createElement('span');
-  pointText.innerText = point.value + '';
-  pointText.style.fontSize = '2.4rem';
-  point.element = pointText;
-  root.appendChild(pointText);
+  const scoreBoard = document.createElement('div');
+  scoreBoard.setAttribute('class', 'score');
+  const scoreBestText = document.createElement('span');
+  const scoreCurText = document.createElement('span');
+  const trophy = document.createElement('img');
+  scoreBestText.innerText = point.value + '';
+  scoreBestText.setAttribute('class', 'score__text--best');
+  scoreCurText.innerText = point.value + '';
+  scoreCurText.setAttribute('class', 'score__text--current');
+  trophy.src = '/images/trophy4.svg';
+  trophy.setAttribute('class', 'score__trophy');
+  scoreBoard.appendChild(scoreCurText);
+  scoreBoard.appendChild(trophy);
+  scoreBoard.appendChild(scoreBestText);
+  root.appendChild(scoreBoard);
   const blockContainer = document.createElement('div');
   Board();
   const originTile = document.getElementById('0+0').clientWidth;
@@ -180,6 +190,7 @@ function render() {
   blockContainer.style.marginTop = '50px';
   blockContainer.style.gap = '20px';
   blockContainer.id = 'blockContainer';
+  point.element = scoreCurText;
   root.appendChild(blockContainer);
 
   generateRandomBlocks();
