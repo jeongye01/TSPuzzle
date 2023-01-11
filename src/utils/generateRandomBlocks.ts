@@ -1,4 +1,4 @@
-import { generatedBlocks, root } from '..';
+import { generatedBlocks, $root } from '..';
 import { Block } from '../components/Blocks/Block';
 import { BLOCK_SHAPES } from '../constants/BlockShapes';
 

@@ -5,7 +5,7 @@ import './styles/style.css';
 import { fillBlock } from './utils/fillBlock';
 import { generateRandomBlocks } from './utils/generateRandomBlocks';
 import { overBlock } from './utils/overBlock';
-export const root = document.getElementById('root') as HTMLElement;
+export const $root = document.getElementById('root') as HTMLElement;
 
 export const calcOriginTileBoardIndex = (mouseX: number, mouseY: number) => {
   const originPosX = mouseX - distanceFromOrigin.x;
@@ -161,7 +161,7 @@ function Board() {
   });
   board.id = 'board';
 
-  root.appendChild(board);
+  $root.appendChild(board);
 }
 
 function render() {
@@ -179,7 +179,7 @@ function render() {
   scoreBoard.appendChild(scoreCurText);
   scoreBoard.appendChild(trophy);
   scoreBoard.appendChild(scoreBestText);
-  root.appendChild(scoreBoard);
+  $root.appendChild(scoreBoard);
   const blockContainer = document.createElement('div');
   Board();
   const originTile = document.getElementById('0+0').clientWidth;
@@ -191,7 +191,7 @@ function render() {
   blockContainer.style.gap = '20px';
   blockContainer.id = 'blockContainer';
   point.element = scoreCurText;
-  root.appendChild(blockContainer);
+  $root.appendChild(blockContainer);
 
   generateRandomBlocks();
 }

@@ -1,4 +1,4 @@
-import { root, block, boardState } from '../..';
+import { $root, block, boardState } from '../..';
 import BlockGenerator from '../BlockGenerator';
 import { blockStateSetter, calcBlockOriginPos } from '../blockDragStart';
 
@@ -41,5 +41,5 @@ export function Block(blockShape: number[][], id: string) {
   blockElement.id = id;
   console.log(blockElement);
   // block.setAttribute('class','block')
-  root.appendChild(blockElement);
+  $root.appendChild(blockElement);
 }
