@@ -46,6 +46,33 @@ export const point = {
     this.element.innerText = this.value;
   },
 };
+
+// TODO: BlockClass->Block 으로 이름 변경
+export class BlockClass {
+  private isActive: boolean;
+  constructor(
+    private readonly element: HTMLDivElement,
+    private readonly shape: number[][],
+    private readonly color: string
+  ) {}
+  get getElement(): HTMLDivElement {
+    return this.element;
+  }
+  get getShape(): number[][] {
+    return this.shape;
+  }
+  get getColor(): string {
+    return this.color;
+  }
+  get getIsActive(): boolean {
+    return this.isActive;
+  }
+  // TODO: isPlaceable() 함수 활용해서 바꾸기
+  set setIsActive(isActive: boolean) {
+    this.isActive = isActive;
+  }
+}
+
 export const block = {
   element: null,
   shape: null,
