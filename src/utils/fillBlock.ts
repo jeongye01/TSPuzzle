@@ -1,8 +1,8 @@
 import {
   boardState,
-  block,
   distanceFromOrigin,
   generatedBlocks,
+  holdingBlock,
   point,
 } from '..';
 import { getLeftEnd, getUpEnd } from './blockEnds';
@@ -12,9 +12,9 @@ import { isOutOfRange } from './isOutOfRange';
 import { isPlaceable } from './isPlaceable';
 
 export const fillBlock = (x: number, y: number) => {
-  const { shape: blockShape } = block;
-  const blockColor = block.color;
-  console.log(blockColor, block);
+  const blockShape = holdingBlock.getShape;
+  const blockColor = holdingBlock.getColor;
+  const blockElement = holdingBlock.getElement;
   if (blockColor === undefined) return;
   const rowLength = blockShape.length;
   const colLength = blockShape[0].length;
@@ -35,8 +35,8 @@ export const fillBlock = (x: number, y: number) => {
       targetTile.style.backgroundColor = `${blockColor}`;
     }
   }
-  generatedBlocks.removeOne(block.element.id);
-  block.element.remove();
+  generatedBlocks.removeOne(blockElement.id);
+  blockElement.remove();
   if (!generatedBlocks.leftBlockIds.length) {
     generateRandomBlocks();
   }
@@ -81,7 +81,7 @@ export const fillBlock = (x: number, y: number) => {
   //console.log(filledLineCtn,"라인 수");
   // 점수 올리기
   // console.log(block.getTileCtn(),"타일 수");
-  let newPoint = block.getTileCtn();
+  let newPoint = holdingBlock.getTileCtn();
   if (filledLineCtn) {
     if (filledLineCtn === 1) {
       newPoint += 10;

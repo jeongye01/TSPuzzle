@@ -47,14 +47,21 @@ export const point = {
   },
 };
 
-// TODO: BlockClass->Block 으로 이름 변경
-export class BlockClass {
+// 싱글톤패턴
+class HoldingBlock {
   private isActive: boolean;
-  constructor(
-    private readonly element: HTMLDivElement,
-    private readonly shape: number[][],
-    private readonly color: string
-  ) {}
+  private element: HTMLDivElement;
+  private shape: number[][];
+  private color: string;
+  static instance;
+  constructor() {
+    if (HoldingBlock.instance) return HoldingBlock.instance;
+  }
+  init(element: HTMLDivElement, shape: number[][]) {
+    this.element = element;
+    this.shape = shape;
+    this.color = element.dataset.color;
+  }
   get getElement(): HTMLDivElement {
     return this.element;
   }
@@ -67,12 +74,21 @@ export class BlockClass {
   get getIsActive(): boolean {
     return this.isActive;
   }
-  // TODO: isPlaceable() 함수 활용해서 바꾸기
+  getTileCtn(): number {
+    let result = 0;
+    this.shape.forEach((row) =>
+      row.forEach((val) => {
+        if (val) result += 1;
+      })
+    );
+    return result;
+  }
   set setIsActive(isActive: boolean) {
     this.isActive = isActive;
   }
 }
-
+export const holdingBlock = new HoldingBlock();
+/*
 export const block = {
   element: null,
   shape: null,
@@ -98,6 +114,7 @@ export const block = {
     return result;
   },
 };
+*/
 export const generatedBlocks = {
   leftBlockIds: [],
   mapShapeNId: new Map(),

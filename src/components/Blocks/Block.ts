@@ -1,4 +1,4 @@
-import { $root, block, boardState } from '../..';
+import { $root, holdingBlock, boardState } from '../..';
 import BlockGenerator from '../BlockGenerator';
 import { blockStateSetter, calcBlockOriginPos } from '../blockDragStart';
 
@@ -26,10 +26,10 @@ export function Block(blockShape: number[][], id: string) {
       blockShape
     );
     blockStateSetter(originX, originY, blockElement, blockShape);
-    block.element.classList.add('hide');
+    holdingBlock.getElement.classList.add('hide');
   };
   const onDragEnd = (e) => {
-    block.element.classList.remove('hide');
+    holdingBlock.getElement.classList.remove('hide');
   };
 
   BlockGenerator(blockElement, blockShape);

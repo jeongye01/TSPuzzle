@@ -1,4 +1,4 @@
-import { block, boardState } from '..';
+import { boardState } from '..';
 
 // 들어갈 공간이 한 군데라도 있으면 true
 export const isPlaceable = (

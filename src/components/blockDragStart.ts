@@ -1,4 +1,4 @@
-import { block, distanceFromOrigin, tileSize } from '..';
+import { distanceFromOrigin, tileSize, holdingBlock } from '..';
 
 export const calcBlockOriginPos = (
   offsetX,
@@ -19,6 +19,5 @@ export const blockStateSetter = (
 ) => {
   const bindDiffSetter = distanceFromOrigin.setter.bind(distanceFromOrigin);
   bindDiffSetter(distanceFromOriginX, distanceFromOriginY);
-  const bindBlockSetter = block.setter.bind(block);
-  bindBlockSetter(blockElement, blockShape);
+  holdingBlock.init(blockElement, blockShape);
 };

@@ -1,10 +1,11 @@
-import { block } from '..';
+import { holdingBlock } from '..';
 import { getLeftEnd, getUpEnd } from './blockEnds';
 import { isBlockOverlapping } from './isBlockOverlapping';
 import { isOutOfRange } from './isOutOfRange';
 
 export const overBlock = (x: number, y: number) => {
-  const { shape: blockShape } = block;
+  const blockShape = holdingBlock.getShape;
+  const blockColor = holdingBlock.getColor;
   const rowLength = blockShape.length;
   const colLength = blockShape[0].length;
   if (isOutOfRange(x, y, rowLength, colLength)) return;
@@ -17,7 +18,7 @@ export const overBlock = (x: number, y: number) => {
         `${ox + getLeftEnd(x, colLength)}+${oy + getUpEnd(y, rowLength)}`
       );
       targetTile.classList.add('board__tile--over');
-      targetTile.style.backgroundColor = block.color;
+      targetTile.style.backgroundColor = blockColor;
     }
   }
 };

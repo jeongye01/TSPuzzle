@@ -1,4 +1,4 @@
-import { boardState, block } from '..';
+import { boardState, holdingBlock } from '..';
 import { getLeftEnd, getUpEnd } from './blockEnds';
 
 export const isBlockOverlapping = (
@@ -7,7 +7,7 @@ export const isBlockOverlapping = (
   rowLength: number,
   colLength: number
 ) => {
-  const { shape: blockShape } = block;
+  const blockShape = holdingBlock.getShape;
   let result = false;
   for (let ox = 0; ox < colLength; ox++) {
     for (let oy = 0; oy < rowLength; oy++) {
