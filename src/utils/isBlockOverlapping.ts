@@ -7,7 +7,7 @@ export const isBlockOverlapping = (
   rowLength: number,
   colLength: number
 ) => {
-  const blockShape = holdingBlock.getShape;
+  const blockShape = holdingBlock.shape;
   let result = false;
   for (let ox = 0; ox < colLength; ox++) {
     for (let oy = 0; oy < rowLength; oy++) {

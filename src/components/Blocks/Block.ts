@@ -26,10 +26,10 @@ export function Block(blockShape: number[][], id: string) {
       blockShape
     );
     blockStateSetter(originX, originY, blockElement, blockShape);
-    holdingBlock.getElement.classList.add('hide');
+    holdingBlock.element.classList.add('hide');
   };
   const onDragEnd = (e) => {
-    holdingBlock.getElement.classList.remove('hide');
+    holdingBlock.element.classList.remove('hide');
   };
 
   BlockGenerator(blockElement, blockShape);

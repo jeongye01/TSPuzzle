@@ -4,8 +4,8 @@ import { isBlockOverlapping } from './isBlockOverlapping';
 import { isOutOfRange } from './isOutOfRange';
 
 export const overBlock = (x: number, y: number) => {
-  const blockShape = holdingBlock.getShape;
-  const blockColor = holdingBlock.getColor;
+  const blockShape = holdingBlock.shape;
+  const blockColor = holdingBlock.color;
   const rowLength = blockShape.length;
   const colLength = blockShape[0].length;
   if (isOutOfRange(x, y, rowLength, colLength)) return;

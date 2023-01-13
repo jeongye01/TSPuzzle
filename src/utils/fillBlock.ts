@@ -12,9 +12,9 @@ import { isOutOfRange } from './isOutOfRange';
 import { isPlaceable } from './isPlaceable';
 
 export const fillBlock = (x: number, y: number) => {
-  const blockShape = holdingBlock.getShape;
-  const blockColor = holdingBlock.getColor;
-  const blockElement = holdingBlock.getElement;
+  const blockShape = holdingBlock.shape;
+  const blockColor = holdingBlock.color;
+  const blockElement = holdingBlock.element;
   if (blockColor === undefined) return;
   const rowLength = blockShape.length;
   const colLength = blockShape[0].length;

@@ -49,30 +49,30 @@ export const point = {
 
 // 싱글톤패턴
 class HoldingBlock {
-  private isActive: boolean;
-  private element: HTMLDivElement;
-  private shape: number[][];
-  private color: string;
+  private blockIsActive: boolean;
+  private blockElement: HTMLDivElement;
+  private blockShape: number[][];
+  private blockColor: string;
   static instance;
   constructor() {
     if (HoldingBlock.instance) return HoldingBlock.instance;
   }
   init(element: HTMLDivElement, shape: number[][]) {
-    this.element = element;
-    this.shape = shape;
-    this.color = element.dataset.color;
+    this.blockElement = element;
+    this.blockShape = shape;
+    this.blockColor = element.dataset.color;
   }
-  get getElement(): HTMLDivElement {
+  get element(): HTMLDivElement {
     return this.element;
   }
-  get getShape(): number[][] {
-    return this.shape;
+  get shape(): number[][] {
+    return this.blockShape;
   }
-  get getColor(): string {
-    return this.color;
+  get color(): string {
+    return this.blockColor;
   }
-  get getIsActive(): boolean {
-    return this.isActive;
+  get isActive(): boolean {
+    return this.blockIsActive;
   }
   getTileCtn(): number {
     let result = 0;
@@ -84,7 +84,7 @@ class HoldingBlock {
     return result;
   }
   set setIsActive(isActive: boolean) {
-    this.isActive = isActive;
+    this.blockIsActive = isActive;
   }
 }
 export const holdingBlock = new HoldingBlock();
