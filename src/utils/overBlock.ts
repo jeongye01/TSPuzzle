@@ -5,7 +5,7 @@ import { isOutOfRange } from './isOutOfRange';
 
 export const overBlock = (x: number, y: number) => {
   const blockShape = holdingBlock.shape;
-  const blockColor = holdingBlock.color;
+  const blockColor = holdingBlock.getColor();
   const rowLength = blockShape.length;
   const colLength = blockShape[0].length;
   if (isOutOfRange(x, y, rowLength, colLength)) return;

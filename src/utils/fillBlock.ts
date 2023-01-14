@@ -8,7 +8,7 @@ import { isPlaceable } from './isPlaceable';
 
 export const fillBlock = (x: number, y: number) => {
   const blockShape = holdingBlock.shape;
-  const blockColor = holdingBlock.color;
+  const blockColor = holdingBlock.getColor();
   const blockElement = holdingBlock.element;
   if (blockColor === undefined) return;
   const rowLength = blockShape.length;
@@ -76,7 +76,7 @@ export const fillBlock = (x: number, y: number) => {
   //console.log(filledLineCtn,"라인 수");
   // 점수 올리기
   // console.log(block.getTileCtn(),"타일 수");
-  let newPoint = holdingBlock.tileCtn;
+  let newPoint = holdingBlock.getTileCtn();
   if (filledLineCtn) {
     if (filledLineCtn === 1) {
       newPoint += 10;
