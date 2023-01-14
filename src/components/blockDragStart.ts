@@ -1,4 +1,5 @@
-import { distanceFromOrigin, tileSize, holdingBlock } from '..';
+import { distanceFromOrigin, tileSize } from '..';
+import { holdingBlock } from '../HoldingBlock';
 
 export const calcBlockOriginPos = (
   offsetX,

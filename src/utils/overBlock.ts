@@ -1,4 +1,4 @@
-import { holdingBlock } from '..';
+import { holdingBlock } from '../HoldingBlock';
 import { getLeftEnd, getUpEnd } from './blockEnds';
 import { isBlockOverlapping } from './isBlockOverlapping';
 import { isOutOfRange } from './isOutOfRange';

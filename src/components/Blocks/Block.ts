@@ -1,6 +1,7 @@
-import { $root, holdingBlock, boardState } from '../..';
+import { $root, boardState } from '../..';
 import BlockGenerator from '../BlockGenerator';
 import { blockStateSetter, calcBlockOriginPos } from '../blockDragStart';
+import { holdingBlock } from '../../HoldingBlock';
 
 export function Block(blockShape: number[][], id: string) {
   const getAlignItemState = () => {

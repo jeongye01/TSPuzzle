@@ -47,74 +47,8 @@ export const point = {
   },
 };
 
-// 싱글톤패턴
-class HoldingBlock {
-  private blockIsActive: boolean;
-  private blockElement: HTMLDivElement;
-  private blockShape: number[][];
-  private blockColor: string;
-  static instance;
-  constructor() {
-    if (HoldingBlock.instance) return HoldingBlock.instance;
-  }
-  init(element: HTMLDivElement, shape: number[][]) {
-    this.blockElement = element;
-    this.blockShape = shape;
-    this.blockColor = element.dataset.color;
-  }
-  get element(): HTMLDivElement {
-    return this.element;
-  }
-  get shape(): number[][] {
-    return this.blockShape;
-  }
-  get color(): string {
-    return this.blockColor;
-  }
-  get isActive(): boolean {
-    return this.blockIsActive;
-  }
-  getTileCtn(): number {
-    let result = 0;
-    this.shape.forEach((row) =>
-      row.forEach((val) => {
-        if (val) result += 1;
-      })
-    );
-    return result;
-  }
-  set setIsActive(isActive: boolean) {
-    this.blockIsActive = isActive;
-  }
-}
-export const holdingBlock = new HoldingBlock();
-/*
-export const block = {
-  element: null,
-  shape: null,
-  color: null,
-  isPlaceable: true,
-  setter: function (element: HTMLDivElement, shape: number[][]) {
-    this.element = element;
-    this.shape = shape;
-    this.color = element.dataset.color;
-    console.log(this.color, 'index');
-  },
-  setIsPlaceable: function (isPlaceable: boolean) {
-    this.isPlaceable = isPlaceable;
-  },
-  getTileCtn: function () {
-    let result = 0;
-    // console.log(this.shape);
-    this.shape.forEach((row) =>
-      row.forEach((val) => {
-        if (val) result += 1;
-      })
-    );
-    return result;
-  },
-};
-*/
+export const boardState = Array.from(Array(10), () => Array(10).fill(0));
+
 export const generatedBlocks = {
   leftBlockIds: [],
   mapShapeNId: new Map(),
@@ -135,7 +69,6 @@ export const generatedBlocks = {
   },
 };
 
-export const boardState = Array.from(Array(10), () => Array(10).fill(0));
 const board = document.createElement('div');
 function Board() {
   const onDrop = (e) => {

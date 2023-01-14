@@ -1,4 +1,5 @@
-import { boardState, holdingBlock } from '..';
+import { boardState } from '..';
+import { holdingBlock } from '../HoldingBlock';
 import { getLeftEnd, getUpEnd } from './blockEnds';
 
 export const isBlockOverlapping = (

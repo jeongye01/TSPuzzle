@@ -1,10 +1,5 @@
-import {
-  boardState,
-  distanceFromOrigin,
-  generatedBlocks,
-  holdingBlock,
-  point,
-} from '..';
+import { boardState, distanceFromOrigin, generatedBlocks, point } from '..';
+import { holdingBlock } from '../HoldingBlock';
 import { getLeftEnd, getUpEnd } from './blockEnds';
 import { generateRandomBlocks } from './generateRandomBlocks';
 import { isBlockOverlapping } from './isBlockOverlapping';
@@ -81,7 +76,7 @@ export const fillBlock = (x: number, y: number) => {
   //console.log(filledLineCtn,"라인 수");
   // 점수 올리기
   // console.log(block.getTileCtn(),"타일 수");
-  let newPoint = holdingBlock.getTileCtn();
+  let newPoint = holdingBlock.tileCtn;
   if (filledLineCtn) {
     if (filledLineCtn === 1) {
       newPoint += 10;
