@@ -176,3 +176,41 @@ function render() {
 render();
 
 //    box-shadow: rgba(0, 0, 0, 0.25) 0 -0.5rem 0.5rem 0.3rem inset;
+
+/*
+
+
+class Component {
+	_target;
+	_model;
+	_view;
+
+	constructor(target, model, view) {
+		this._target = () => document.querySelector(target);
+		this._model = model;
+		this._view = view;
+	}
+}
+
+class Model {
+	_state;
+	
+	constructor(initialState) {
+		this._state = initialState;
+	}
+
+}
+
+class View {
+	_target;
+	
+	constructor(target) {
+		this._target = () => document.querySelector(target);
+	}
+}
+
+// 생성 시
+const component = new Component('#app', new Model({}), new View('#app'));
+
+
+*/
