@@ -1,4 +1,4 @@
-import { calcBlockOriginPos } from '../../../components/blockDragStart';
+import { calcBlockOriginPos } from '../utils';
 
 export default class BlockComponent {
   private _target: HTMLDivElement;
@@ -35,7 +35,7 @@ export default class BlockComponent {
       e.offsetY,
       this._model.shape
     );
-    this._model.setOriginPos(originX, originY);
+    this._model.setPosition(originX, originY);
     this._target.classList.add('hide');
   };
   onDragEnd = (e) => {

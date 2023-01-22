@@ -1,5 +1,4 @@
 import { $root } from '../../..';
-import { calcBlockOriginPos } from '../../../components/blockDragStart';
 import { isPlaceable } from '../../../utils/isPlaceable';
 
 export default class BlockView {
