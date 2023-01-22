@@ -1,6 +1,7 @@
 export default class BlockModel {
   private _shape: number[][];
   private _color: string;
+  private _originPos: { x: number; y: number };
   private _isActive: boolean;
 
   constructor(shape: number[][], color: string) {
@@ -16,6 +17,10 @@ export default class BlockModel {
   }
   set isActive(activeState: boolean) {
     this._isActive = activeState;
+  }
+  setOriginPos(originX: number, originY: number) {
+    this._originPos.x = originX;
+    this._originPos.y = originY;
   }
   get isActive() {
     return this._isActive;
