@@ -1,5 +1,4 @@
 import { isPlaceable } from '../utils/isPlaceable';
-
 const BLOCK_COLORS = [
   '#29CC7A', // 초록
   '#FF78B9', // 핑크
@@ -9,6 +8,7 @@ const BLOCK_COLORS = [
   '#FF8C19', //주황
   '#D11583', //보라
 ];
+
 export default function BlockGenerator(
   blockElement: HTMLDivElement,
   blockShape: number[][]
@@ -29,6 +29,6 @@ export default function BlockGenerator(
       blockElement.appendChild(blockRow);
     });
   });
-  blockElement.dataset.color = blockColor;
-  isPlaceable(blockElement, blockShape);
+  // blockElement.dataset.color = blockColor;
+  isPlaceable(blockElement, blockShape); // controllor
 }

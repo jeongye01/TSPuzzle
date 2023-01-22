@@ -1,14 +1,27 @@
+import { isPlaceable } from '../../../utils/isPlaceable';
+
 export default class BlockView {
-  private _target: () => Element;
+  private _target: () => HTMLDivElement;
   constructor(target: string) {
     this._target = () => document.querySelector(target);
   }
 
-  template = (state) => {
-    return `<div>${state.value}</div>`;
-  };
+  render = (blockColor: string, blockShape: number[][]) => {
+    const blockElement = this._target();
+    blockShape.forEach((row) => {
+      const blockRow = document.createElement('div');
+      row.forEach((b) => {
+        if (b) {
+          const tile = document.createElement('div');
+          tile.setAttribute('class', 'tile block__tile');
+          tile.style.backgroundColor = blockColor;
+          blockRow.appendChild(tile);
+          blockRow.style.display = 'flex';
+        }
 
-  render = (state) => {
-    this._target().innerHTML = this.template(state);
+        blockElement.appendChild(blockRow);
+        isPlaceable(blockElement, blockShape);
+      });
+    });
   };
 }
