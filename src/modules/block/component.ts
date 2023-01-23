@@ -31,12 +31,15 @@ export default class Block {
   init = () => {};
 
   onDragStart = (e) => {
+    console.log('for hide1');
     const { originX, originY } = calcBlockOriginPos(
       e.offsetX,
       e.offsetY,
       this._model.shape
     );
+    console.log('for hide2', this._model);
     this._model.setPosition(originX, originY);
+    console.log(this._target, 'for hide');
     this._target.classList.add('hide');
     const bindHoldingBlockSetId = holdingBlock.setBlock.bind(holdingBlock);
     bindHoldingBlockSetId(this._target.id);

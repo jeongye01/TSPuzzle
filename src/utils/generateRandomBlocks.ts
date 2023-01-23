@@ -1,4 +1,4 @@
-import { generatedBlocks } from '..';
+import { $root, generatedBlocks } from '..';
 import { BLOCK_SHAPES } from '../constants/BlockShapes';
 import BlockComponent from '../modules/block/component';
 import BlockModel from '../modules/block/model';
@@ -13,24 +13,30 @@ const BLOCK_COLORS = [
   '#FF8C19', //주황
   '#D11583', //보라
 ];
+
 export const generateRandomBlocks = () => {
+  const blockContainer = document.getElementById('blockContainer');
   const BLOCK_NUM = 3;
 
-  const blockContainer = document.getElementById('blockContainer');
   for (let i = 0; i < BLOCK_NUM; i++) {
     const blockId = `block_${i}`;
     const blockShape = BLOCK_SHAPES[Math.trunc(Math.random() * 31)];
     const blockColor = BLOCK_COLORS[Math.trunc(Math.random() * 7)];
     const newBlock = document.createElement('div');
     newBlock.id = blockId;
+    document.body.appendChild(newBlock);
     blockContainer.appendChild(newBlock);
     new BlockComponent(
       newBlock,
       new BlockModel(blockShape, blockColor, blockId),
-      new BlockView(`#${blockId}`)
+      new BlockView(blockId)
     );
-
+    console.log('블록생성', i);
     generatedBlocks.addOne(blockId);
+    console.log('블록생성', i);
     generatedBlocks.mapShape(blockId, blockShape);
+    console.log('블록생성', i);
+
+    console.log('블록생성', i, blockContainer);
   }
 };

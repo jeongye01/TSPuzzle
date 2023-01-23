@@ -2,9 +2,9 @@ import { $root } from '../..';
 import { isPlaceable } from '../../utils/isPlaceable';
 
 export default class BlockView {
-  private _target: () => HTMLDivElement;
+  private _targetById: () => HTMLDivElement;
   constructor(target: string) {
-    this._target = () => document.querySelector(target);
+    this._targetById = () => document.getElementById(target) as HTMLDivElement;
   }
 
   getBlockAlignItemState = (blockShape: number[][]) => {
@@ -22,7 +22,9 @@ export default class BlockView {
   };
 
   render = (blockColor: string, blockShape: number[][]) => {
-    const blockElement = this._target();
+    const blockElement = this._targetById();
+    blockElement.draggable = true;
+    console.log('blockElement', blockElement);
     blockShape.forEach((row) => {
       const blockRow = document.createElement('div');
       row.forEach((b) => {
@@ -31,17 +33,16 @@ export default class BlockView {
           tile.setAttribute('class', 'tile block__tile');
           tile.style.backgroundColor = blockColor;
           blockRow.appendChild(tile);
-          blockRow.style.display = 'flex';
         }
-
-        blockElement.appendChild(blockRow);
       });
+      blockElement.appendChild(blockRow);
+      blockRow.style.display = 'flex';
     });
     isPlaceable(blockElement, blockShape);
-    blockElement.draggable = true;
+
     blockElement.style.alignItems = this.getBlockAlignItemState(blockShape);
     blockElement.setAttribute('class', 'block');
 
-    //  $root.appendChild(blockElement);
+    // $root.appendChild(blockElement);
   };
 }

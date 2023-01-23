@@ -78,7 +78,6 @@ export const generatedBlocks = {
 };
 const board = document.createElement('div');
 board.id = 'board';
-$root.appendChild(board);
 
 function render() {
   const scoreBoard = document.createElement('div');
@@ -96,7 +95,10 @@ function render() {
   scoreBoard.appendChild(trophy);
   scoreBoard.appendChild(scoreBestText);
   $root.appendChild(scoreBoard);
+  $root.appendChild(board);
+
   const blockContainer = document.createElement('div');
+
   new GameBoardComponent(
     board,
     new GameBoardModel(),
@@ -112,7 +114,6 @@ function render() {
   blockContainer.id = 'blockContainer';
   point.element = scoreCurText;
   $root.appendChild(blockContainer);
-
   generateRandomBlocks();
 }
 

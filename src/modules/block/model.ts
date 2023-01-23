@@ -1,8 +1,12 @@
+type Position = {
+  x: number;
+  y: number;
+};
 export default class BlockModel {
   private _shape: number[][];
   private _color: string;
   private _id: string;
-  private _position: { x: number; y: number };
+  private _position: Position = { x: 0, y: 0 };
   private _isActive: boolean;
 
   constructor(shape: number[][], color: string, id: string) {
