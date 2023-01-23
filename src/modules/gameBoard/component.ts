@@ -21,8 +21,7 @@ export default class GameBoardComponent {
   onDrop = (e) => {
     e.stopPropagation();
     const allTileOver = document.getElementsByClassName('board__tile--over');
-    console.log('drop', allTileOver);
-
+    console.log(this._target);
     // 보드 상에서의 x,y좌표
     const { x, y } = calcOriginTileBoardIndex(
       e.x - this._target.getBoundingClientRect().left,
@@ -32,20 +31,18 @@ export default class GameBoardComponent {
   };
   onDragOver = (e) => {
     e.preventDefault();
-    console.log('drag endter');
     // 보드 상에서의 x,y좌표
     const { x, y } = calcOriginTileBoardIndex(
       e.x - this._target.getBoundingClientRect().left,
       e.y - this._target.getBoundingClientRect().top
     );
     if (x === prevPos.x && y === prevPos.y) return;
-    console.log(x, prevPos.x, y, prevPos.y);
+
     prevPos.setter(x, y);
     const allTileOver = document.querySelectorAll('.board__tile--over');
     Array.prototype.forEach.call(allTileOver, (targetTile) => {
       targetTile.style.backgroundColor = null;
       targetTile.classList.remove('board__tile--over');
-      console.log(targetTile.style.backgroundColor, 'bgcolor');
     });
 
     overBlock(x, y);

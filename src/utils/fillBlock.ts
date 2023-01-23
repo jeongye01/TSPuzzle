@@ -25,7 +25,7 @@ export const fillBlock = (x: number, y: number) => {
       const targetTile = document.getElementById(
         `${ox + getLeftEnd(x, colLength)}+${oy + getUpEnd(y, rowLength)}`
       );
-      console.log(targetTile);
+
       targetTile.classList.remove('board__tile--over');
       targetTile.style.backgroundColor = `${blockColor}`;
     }

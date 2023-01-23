@@ -23,7 +23,6 @@ export default class Block {
   };
 */
   render = () => {
-    console.log(this._target, this._model, this._view, 'render');
     this._view.render(this._model.color, this._model.shape);
   };
 
@@ -31,23 +30,22 @@ export default class Block {
   init = () => {};
 
   onDragStart = (e) => {
-    console.log('for hide1');
     const { originX, originY } = calcBlockOriginPos(
       e.offsetX,
       e.offsetY,
       this._model.shape
     );
-    console.log('for hide2', this._model);
+
     this._model.setPosition(originX, originY);
-    console.log(this._target, 'for hide');
+
     this._target.classList.add('hide');
-    const bindHoldingBlockSetId = holdingBlock.setBlock.bind(holdingBlock);
-    bindHoldingBlockSetId(this._target.id);
+    const bindHoldingBlock = holdingBlock.setBlock.bind(holdingBlock);
+    bindHoldingBlock(this._model);
   };
   onDragEnd = (e) => {
     this._target.classList.remove('hide');
-    const bindHoldingBlockSetId = holdingBlock.setBlock.bind(holdingBlock);
-    bindHoldingBlockSetId(null); //TODO: bad pattern. init 함수 만들기
+    const bindHoldingBlock = holdingBlock.setBlock.bind(holdingBlock);
+    bindHoldingBlock(null); //TODO: bad pattern. init 함수 만들기
   };
   // 이벤트 핸들러 부착
   addEvents = () => {

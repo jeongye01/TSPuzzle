@@ -31,6 +31,9 @@ export default class BlockModel {
     this._position.x = originX;
     this._position.y = originY;
   }
+  get position() {
+    return this._position;
+  }
   get isActive() {
     return this._isActive;
   }

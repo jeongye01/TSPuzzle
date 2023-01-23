@@ -8,10 +8,11 @@ import { generateRandomBlocks } from './utils/generateRandomBlocks';
 export const $root = document.getElementById('root') as HTMLElement;
 export const boardState = Array.from(Array(10), () => Array(10).fill(0));
 export const calcOriginTileBoardIndex = (mouseX: number, mouseY: number) => {
-  const originPosX = mouseX - distanceFromOrigin.x;
-  const originPosY = mouseY - distanceFromOrigin.y;
+  const originPosX = mouseX - holdingBlock.getBlock().position.x;
+  const originPosY = mouseY - holdingBlock.getBlock().position.y;
   const x = Math.trunc(originPosX / tileSize.value); // 보드 상에서의 x좌표
   const y = Math.trunc(originPosY / tileSize.value); // 보드 상에셔의 y좌표
+  console.log('보드 상 좌표', x, y);
   return { x, y };
 };
 
@@ -25,14 +26,6 @@ export const holdingBlock = {
   },
 };
 
-export const distanceFromOrigin = {
-  x: null,
-  y: null,
-  setter: function (x: number, y: number) {
-    this.x = x;
-    this.y = y;
-  },
-};
 export const prevPos = {
   x: null,
   y: null,

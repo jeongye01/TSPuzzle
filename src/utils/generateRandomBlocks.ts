@@ -31,12 +31,9 @@ export const generateRandomBlocks = () => {
       new BlockModel(blockShape, blockColor, blockId),
       new BlockView(blockId)
     );
-    console.log('블록생성', i);
-    generatedBlocks.addOne(blockId);
-    console.log('블록생성', i);
-    generatedBlocks.mapShape(blockId, blockShape);
-    console.log('블록생성', i);
 
-    console.log('블록생성', i, blockContainer);
+    generatedBlocks.addOne(blockId);
+
+    generatedBlocks.mapShape(blockId, blockShape);
   }
 };

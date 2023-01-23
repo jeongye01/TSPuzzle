@@ -24,7 +24,6 @@ export default class BlockView {
   render = (blockColor: string, blockShape: number[][]) => {
     const blockElement = this._targetById();
     blockElement.draggable = true;
-    console.log('blockElement', blockElement);
     blockShape.forEach((row) => {
       const blockRow = document.createElement('div');
       row.forEach((b) => {
