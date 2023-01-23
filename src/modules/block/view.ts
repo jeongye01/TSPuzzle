@@ -1,5 +1,5 @@
-import { $root } from '../../..';
-import { isPlaceable } from '../../../utils/isPlaceable';
+import { $root } from '../..';
+import { isPlaceable } from '../../utils/isPlaceable';
 
 export default class BlockView {
   private _target: () => HTMLDivElement;

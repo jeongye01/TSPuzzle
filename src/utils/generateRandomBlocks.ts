@@ -1,5 +1,4 @@
-import { generatedBlocks, $root } from '..';
-import { Block } from '../components/Blocks/Block';
+import { generatedBlocks } from '..';
 import { BLOCK_SHAPES } from '../constants/BlockShapes';
 import BlockComponent from '../modules/block/component';
 import BlockModel from '../modules/block/model';
@@ -27,7 +26,7 @@ export const generateRandomBlocks = () => {
     blockContainer.appendChild(newBlock);
     new BlockComponent(
       newBlock,
-      new BlockModel(blockShape, blockColor),
+      new BlockModel(blockShape, blockColor, blockId),
       new BlockView(`#${blockId}`)
     );
 

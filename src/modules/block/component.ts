@@ -1,6 +1,7 @@
-import { calcBlockOriginPos } from '../utils';
+import { holdingBlock } from '../..';
+import { calcBlockOriginPos } from './utils';
 
-export default class BlockComponent {
+export default class Block {
   private _target: HTMLDivElement;
   private _model: any; // TODO: any 빼기
   private _view: any; // TODO: any 빼기
@@ -37,9 +38,13 @@ export default class BlockComponent {
     );
     this._model.setPosition(originX, originY);
     this._target.classList.add('hide');
+    const bindHoldingBlockSetId = holdingBlock.setBlock.bind(holdingBlock);
+    bindHoldingBlockSetId(this._target.id);
   };
   onDragEnd = (e) => {
     this._target.classList.remove('hide');
+    const bindHoldingBlockSetId = holdingBlock.setBlock.bind(holdingBlock);
+    bindHoldingBlockSetId(null); //TODO: bad pattern. init 함수 만들기
   };
   // 이벤트 핸들러 부착
   addEvents = () => {
