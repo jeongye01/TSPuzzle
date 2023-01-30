@@ -1,5 +1,5 @@
-import { boardState, distanceFromOrigin, generatedBlocks, point } from '..';
-import { holdingBlock } from '../HoldingBlock';
+import { boardState, generatedBlocks, holdingBlock, point } from '..';
+
 import { getLeftEnd, getUpEnd } from './blockEnds';
 import { generateRandomBlocks } from './generateRandomBlocks';
 import { isBlockOverlapping } from './isBlockOverlapping';
@@ -7,9 +7,9 @@ import { isOutOfRange } from './isOutOfRange';
 import { isPlaceable } from './isPlaceable';
 
 export const fillBlock = (x: number, y: number) => {
-  const blockShape = holdingBlock.shape;
-  const blockColor = holdingBlock.getColor();
-  const blockElement = holdingBlock.element;
+  const blockShape = holdingBlock.getBlock().shape;
+  const blockColor = holdingBlock.getBlock().color;
+  // const blockElement = holdingBlock.element;
   if (blockColor === undefined) return;
   const rowLength = blockShape.length;
   const colLength = blockShape[0].length;
@@ -25,12 +25,13 @@ export const fillBlock = (x: number, y: number) => {
       const targetTile = document.getElementById(
         `${ox + getLeftEnd(x, colLength)}+${oy + getUpEnd(y, rowLength)}`
       );
-      console.log(targetTile);
+
       targetTile.classList.remove('board__tile--over');
       targetTile.style.backgroundColor = `${blockColor}`;
     }
   }
-  generatedBlocks.removeOne(blockElement.id);
+  generatedBlocks.removeOne(holdingBlock.getBlock().id);
+  const blockElement = document.getElementById(holdingBlock.getBlock().id);
   blockElement.remove();
   if (!generatedBlocks.leftBlockIds.length) {
     generateRandomBlocks();
@@ -76,7 +77,7 @@ export const fillBlock = (x: number, y: number) => {
   //console.log(filledLineCtn,"라인 수");
   // 점수 올리기
   // console.log(block.getTileCtn(),"타일 수");
-  let newPoint = holdingBlock.getTileCtn();
+  let newPoint = holdingBlock.getBlock().getTileCtn();
   if (filledLineCtn) {
     if (filledLineCtn === 1) {
       newPoint += 10;

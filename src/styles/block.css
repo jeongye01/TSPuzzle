@@ -3,14 +3,9 @@
   flex-direction: column;
   gap: 0.1rem;
 }
+
 .block > div {
   gap: 0.1rem;
-}
-.block--abled {
-  background-color: inherit;
-}
-.block--disabled {
-  background-color: red;
 }
 
 .block__tile {

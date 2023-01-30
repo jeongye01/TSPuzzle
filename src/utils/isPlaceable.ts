@@ -37,7 +37,7 @@ export const isPlaceable = (
   // console.log(tiles);
 
   Array.prototype.forEach.call(tiles, (tile) => {
-    console.log(result);
+    //  console.log(result);
     tile.style.backgroundColor = `${
       result ? blockElement.dataset.color : 'gray'
     }`;

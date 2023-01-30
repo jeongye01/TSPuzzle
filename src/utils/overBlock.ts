@@ -1,11 +1,12 @@
-import { holdingBlock } from '../HoldingBlock';
+import { holdingBlock } from '..';
 import { getLeftEnd, getUpEnd } from './blockEnds';
 import { isBlockOverlapping } from './isBlockOverlapping';
 import { isOutOfRange } from './isOutOfRange';
 
 export const overBlock = (x: number, y: number) => {
-  const blockShape = holdingBlock.shape;
-  const blockColor = holdingBlock.getColor();
+  const blockShape = holdingBlock.getBlock().shape;
+  const blockColor = holdingBlock.getBlock().color;
+
   const rowLength = blockShape.length;
   const colLength = blockShape[0].length;
   if (isOutOfRange(x, y, rowLength, colLength)) return;
