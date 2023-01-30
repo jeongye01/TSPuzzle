@@ -33,9 +33,7 @@ export const fillBlock = (x: number, y: number) => {
   generatedBlocks.removeOne(holdingBlock.getBlock().id);
   const blockElement = document.getElementById(holdingBlock.getBlock().id);
   blockElement.remove();
-  if (!generatedBlocks.leftBlockIds.length) {
-    generateRandomBlocks();
-  }
+
   let allFilledRows = [];
   let allFilledCols = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
   boardState.forEach((row, rowIdx) => {
@@ -105,17 +103,21 @@ export const fillBlock = (x: number, y: number) => {
     // 비활성화 상태인지 판단하고, 해당 스타일을 입힘.
     const placableState = isPlaceable(
       leftBlock,
-      generatedBlocks.mapShapeNId.get(id)
+      generatedBlocks.mapShapeNId.get(id),
+      blockColor
     );
     if (!placableState) disabledBlockCtn += 1;
   });
   if (disabledBlockCtn === generatedBlocks.leftBlockIds.length) {
-    console.log(
+    /* console.log(
       'game over',
       disabledBlockCtn,
       generatedBlocks.leftBlockIds.length
-    );
+    );*/
   }
   // console.log(generatedBlocks);
-  console.log(boardState);
+  //console.log(boardState);
+  if (!generatedBlocks.leftBlockIds.length) {
+    generateRandomBlocks();
+  }
 };

@@ -12,7 +12,7 @@ export const calcOriginTileBoardIndex = (mouseX: number, mouseY: number) => {
   const originPosY = mouseY - holdingBlock.getBlock().position.y;
   const x = Math.trunc(originPosX / tileSize.value); // 보드 상에서의 x좌표
   const y = Math.trunc(originPosY / tileSize.value); // 보드 상에셔의 y좌표
-  console.log('보드 상 좌표', x, y);
+  //console.log('보드 상 좌표', x, y);
   return { x, y };
 };
 

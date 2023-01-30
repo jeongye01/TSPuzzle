@@ -37,7 +37,7 @@ export default class BlockView {
       blockElement.appendChild(blockRow);
       blockRow.style.display = 'flex';
     });
-    isPlaceable(blockElement, blockShape);
+    isPlaceable(blockElement, blockShape, blockColor);
 
     blockElement.style.alignItems = this.getBlockAlignItemState(blockShape);
     blockElement.setAttribute('class', 'block');
