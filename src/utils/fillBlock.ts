@@ -33,9 +33,7 @@ export const fillBlock = (x: number, y: number) => {
   generatedBlocks.removeOne(holdingBlock.getBlock().id);
   const blockElement = document.getElementById(holdingBlock.getBlock().id);
   blockElement.remove();
-  if (!generatedBlocks.leftBlockIds.length) {
-    generateRandomBlocks();
-  }
+
   let allFilledRows = [];
   let allFilledCols = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
   boardState.forEach((row, rowIdx) => {
@@ -110,12 +108,16 @@ export const fillBlock = (x: number, y: number) => {
     if (!placableState) disabledBlockCtn += 1;
   });
   if (disabledBlockCtn === generatedBlocks.leftBlockIds.length) {
-    console.log(
+    /* console.log(
       'game over',
       disabledBlockCtn,
       generatedBlocks.leftBlockIds.length
-    );
+    );*/
   }
   // console.log(generatedBlocks);
-  console.log(boardState);
+  //console.log(boardState);
+  //TODO: bad pattern. init 함수 만들기
+  if (!generatedBlocks.leftBlockIds.length) {
+    generateRandomBlocks();
+  }
 };

@@ -21,7 +21,7 @@ export default class GameBoardComponent {
   onDrop = (e) => {
     e.stopPropagation();
     const allTileOver = document.getElementsByClassName('board__tile--over');
-    console.log(this._target);
+    //console.log(this._target);
     // 보드 상에서의 x,y좌표
     const { x, y } = calcOriginTileBoardIndex(
       e.x - this._target.getBoundingClientRect().left,

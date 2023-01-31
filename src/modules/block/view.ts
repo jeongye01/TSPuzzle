@@ -35,6 +35,7 @@ export default class BlockView {
         }
       });
       blockElement.appendChild(blockRow);
+      blockElement.dataset.color = blockColor;
       blockRow.style.display = 'flex';
     });
     isPlaceable(blockElement, blockShape);
