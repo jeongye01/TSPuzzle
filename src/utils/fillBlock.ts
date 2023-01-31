@@ -103,8 +103,7 @@ export const fillBlock = (x: number, y: number) => {
     // 비활성화 상태인지 판단하고, 해당 스타일을 입힘.
     const placableState = isPlaceable(
       leftBlock,
-      generatedBlocks.mapShapeNId.get(id),
-      blockColor
+      generatedBlocks.mapShapeNId.get(id)
     );
     if (!placableState) disabledBlockCtn += 1;
   });
@@ -117,6 +116,7 @@ export const fillBlock = (x: number, y: number) => {
   }
   // console.log(generatedBlocks);
   //console.log(boardState);
+  //TODO: bad pattern. init 함수 만들기
   if (!generatedBlocks.leftBlockIds.length) {
     generateRandomBlocks();
   }

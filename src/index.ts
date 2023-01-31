@@ -19,6 +19,7 @@ export const calcOriginTileBoardIndex = (mouseX: number, mouseY: number) => {
 export const holdingBlock = {
   _block: null,
   setBlock(block: BlockModel) {
+    console.log('블록셋', block);
     this._block = block;
   },
   getBlock() {

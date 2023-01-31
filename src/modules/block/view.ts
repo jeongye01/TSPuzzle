@@ -35,9 +35,10 @@ export default class BlockView {
         }
       });
       blockElement.appendChild(blockRow);
+      blockElement.dataset.color = blockColor;
       blockRow.style.display = 'flex';
     });
-    isPlaceable(blockElement, blockShape, blockColor);
+    isPlaceable(blockElement, blockShape);
 
     blockElement.style.alignItems = this.getBlockAlignItemState(blockShape);
     blockElement.setAttribute('class', 'block');

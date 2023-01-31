@@ -3,8 +3,7 @@ import { boardState } from '..';
 // 들어갈 공간이 한 군데라도 있으면 true
 export const isPlaceable = (
   blockElement: HTMLElement,
-  blockShape: number[][],
-  blockColor: string
+  blockShape: number[][]
 ) => {
   const boardSize = boardState.length;
   const tiles = blockElement.getElementsByClassName('block__tile');
@@ -31,10 +30,10 @@ export const isPlaceable = (
       }
       if (tmp) {
         // 배치할 공간을 찾음
-        console.log(x, y, 'break', blockColor);
+        console.log(x, y, 'break', blockElement.dataset.color);
         Array.prototype.forEach.call(tiles, (tile) => {
           //  console.log(result);
-          tile.style.backgroundColor = `${blockColor}`;
+          tile.style.backgroundColor = `${blockElement.dataset.color}`;
         });
         return true;
       }

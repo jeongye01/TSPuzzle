@@ -41,6 +41,7 @@ export default class Block {
     this._target.classList.add('hide');
     const bindHoldingBlock = holdingBlock.setBlock.bind(holdingBlock);
     bindHoldingBlock(this._model);
+    console.log(holdingBlock.getBlock().id);
   };
   onDragEnd = (e) => {
     this._target.classList.remove('hide');
@@ -56,3 +57,4 @@ export default class Block {
   // 자식 컴포넌트 생성
   initChildren = () => {};
 }
+// TODO: 블록 오버부터 색꼬이는 문제 해결하기
