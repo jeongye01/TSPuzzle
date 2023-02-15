@@ -1,8 +1,5 @@
-import { $root, generatedBlocks } from '..';
 import { BLOCK_SHAPES } from '../constants/BlockShapes';
-import BlockComponent from '../modules/block/component';
-import BlockModel from '../modules/block/model';
-import BlockView from '../modules/block/view';
+import Block from '../modules/block/component';
 
 const BLOCK_COLORS = [
   '#29CC7A', // 초록
@@ -14,26 +11,20 @@ const BLOCK_COLORS = [
   '#D11583', //보라
 ];
 
-export const generateRandomBlocks = () => {
+export const generateRandomBlocks = ($app: HTMLElement) => {
   const blockContainer = document.getElementById('blockContainer');
   const BLOCK_NUM = 3;
-
   for (let i = 0; i < BLOCK_NUM; i++) {
-    const blockId = `block_${i}`;
-    const blockShape = BLOCK_SHAPES[Math.trunc(Math.random() * 31)];
-    const blockColor = BLOCK_COLORS[Math.trunc(Math.random() * 7)];
+    const id = `block_${i}`;
+    const shape = BLOCK_SHAPES[Math.trunc(Math.random() * 31)];
+    const color = BLOCK_COLORS[Math.trunc(Math.random() * 7)];
     const newBlock = document.createElement('div');
-    newBlock.id = blockId;
-    document.body.appendChild(newBlock);
     blockContainer.appendChild(newBlock);
-    new BlockComponent(
-      newBlock,
-      new BlockModel(blockShape, blockColor, blockId),
-      new BlockView(blockId)
-    );
+    new Block(newBlock, { shape, color, id });
 
-    generatedBlocks.addOne(blockId);
+    // $app.appendChild(newBlock);
+    // generatedBlocks.addOne(blockId);
 
-    generatedBlocks.mapShape(blockId, blockShape);
+    // generatedBlocks.mapShape(blockId, blockShape);
   }
 };

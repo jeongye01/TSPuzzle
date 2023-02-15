@@ -1,15 +1,21 @@
 import { holdingBlock } from '../..';
+import BlockModel from './model';
 import { calcBlockOriginPos } from './utils';
-
+import BlockView from './view';
+export interface IBlock {
+  id: string;
+  shape: number[][];
+  color: string;
+}
 export default class Block {
   private _target: HTMLDivElement;
   private _model: any; // TODO: any 빼기
   private _view: any; // TODO: any 빼기
 
-  constructor(target, model, view) {
+  constructor(target, state: IBlock) {
     this._target = target;
-    this._model = model;
-    this._view = view;
+    this._model = new BlockModel({ ...state });
+    this._view = new BlockView(this._target);
 
     this.init();
     this.render();
@@ -23,7 +29,7 @@ export default class Block {
   };
 */
   render = () => {
-    this._view.render(this._model.color, this._model.shape);
+    this._view.render(this._model.color, this._model.shape, this._model.id);
   };
 
   // component 렌더링 직전 처리할 비즈니스 로직

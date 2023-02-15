@@ -1,25 +1,28 @@
+import App from './modules/app/component';
+import AppView from './modules/app/view';
 import BlockModel from './modules/block/model';
-import GameBoardComponent from './modules/gameBoard/component';
-import GameBoardModel from './modules/gameBoard/model';
-import GameBoardView from './modules/gameBoard/view';
+import GameBoardComponent from './modules/board/component';
+import AppModel from './modules/board/model';
+import GameBoardModel from './modules/board/model';
+import GameBoardView from './modules/board/view';
 import './styles/style.css';
 import { generateRandomBlocks } from './utils/generateRandomBlocks';
 
 export const $root = document.getElementById('root') as HTMLElement;
 export const boardState = Array.from(Array(10), () => Array(10).fill(0));
-export const calcOriginTileBoardIndex = (mouseX: number, mouseY: number) => {
+/*export const calcOriginTileBoardIndex = (mouseX: number, mouseY: number) => {
   const originPosX = mouseX - holdingBlock.getBlock().position.x;
   const originPosY = mouseY - holdingBlock.getBlock().position.y;
-  const x = Math.trunc(originPosX / tileSize.value); // 보드 상에서의 x좌표
-  const y = Math.trunc(originPosY / tileSize.value); // 보드 상에셔의 y좌표
+
+  const x = Math.trunc(originPosX / 40); // 보드 상에서의 x좌표
+  const y = Math.trunc(originPosY / 40); // 보드 상에셔의 y좌표
   //console.log('보드 상 좌표', x, y);
   return { x, y };
-};
+};*/
 
 export const holdingBlock = {
   _block: null,
   setBlock(block: BlockModel) {
-    console.log('블록셋', block);
     this._block = block;
   },
   getBlock() {
@@ -43,6 +46,7 @@ export const tileSize = {
   },
 };
 export const point = {
+  //
   value: 0,
   element: null,
   setter: function (newPoint: number) {
@@ -52,6 +56,7 @@ export const point = {
 };
 
 export const generatedBlocks = {
+  //
   leftBlockIds: [],
   mapShapeNId: new Map(),
   mapShape: function (
@@ -93,11 +98,11 @@ function render() {
 
   const blockContainer = document.createElement('div');
 
-  new GameBoardComponent(
+  /*new GameBoardComponent(
     board,
     new GameBoardModel(),
     new GameBoardView('#board')
-  );
+  );*/
   const originTile = document.getElementById('0+0').clientWidth;
   tileSize.setter(originTile);
 
@@ -108,7 +113,9 @@ function render() {
   blockContainer.id = 'blockContainer';
   point.element = scoreCurText;
   $root.appendChild(blockContainer);
-  generateRandomBlocks();
+  //generateRandomBlocks();
 }
 
-render();
+//render();*/
+const $app = document.querySelector('#root') as HTMLElement;
+new App($app);

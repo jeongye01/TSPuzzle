@@ -2,9 +2,10 @@ import { $root } from '../..';
 import { isPlaceable } from '../../utils/isPlaceable';
 
 export default class BlockView {
-  private _targetById: () => HTMLDivElement;
-  constructor(target: string) {
-    this._targetById = () => document.getElementById(target) as HTMLDivElement;
+  private _target: HTMLDivElement;
+  constructor(target: HTMLDivElement) {
+    this._target = target;
+    // console.log(target);
   }
 
   getBlockAlignItemState = (blockShape: number[][]) => {
@@ -21,8 +22,9 @@ export default class BlockView {
     return alignItemState;
   };
 
-  render = (blockColor: string, blockShape: number[][]) => {
-    const blockElement = this._targetById();
+  render = (blockColor: string, blockShape: number[][], id: string) => {
+    const blockElement = this._target;
+    blockElement.id = id;
     blockElement.draggable = true;
     blockShape.forEach((row) => {
       const blockRow = document.createElement('div');
@@ -43,6 +45,6 @@ export default class BlockView {
     blockElement.style.alignItems = this.getBlockAlignItemState(blockShape);
     blockElement.setAttribute('class', 'block');
 
-    // $root.appendChild(blockElement);
+    //$root.appendChild(blockElement);
   };
 }

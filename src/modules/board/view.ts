@@ -1,15 +1,15 @@
 import { $root, boardState } from '../..';
 
-export default class GameBoardView {
+export default class BoardView {
   private _target: () => HTMLDivElement;
-
-  constructor(target: string) {
-    this._target = () => document.querySelector(target);
+  constructor(targetId: string) {
+    this._target = () => document.querySelector(targetId);
   }
 
   render = () => {
     // 10*10 크기의 보드생성
     const boardElement = this._target();
+
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1].forEach((_, row) => {
       const rowContainer = document.createElement('div');
       rowContainer.setAttribute('class', 'board__row');
@@ -22,8 +22,6 @@ export default class GameBoardView {
         tile.id = `${col}+${row}`;
         tile.dataset.x = col + '';
         tile.dataset.y = row + '';
-
-        //    tile.addEventListener('dragleave', onDragLeave);
 
         rowContainer.appendChild(tile);
       });

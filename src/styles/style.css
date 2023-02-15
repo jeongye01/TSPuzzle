@@ -34,6 +34,11 @@ html {
   flex-direction: column;
   background-color: var(--bg-inner);
 }
+#blockContainer {
+  display: flex;
+  margin-top: 5rem;
+  gap: 2rem;
+}
 
 .tile {
   min-width: 4rem;

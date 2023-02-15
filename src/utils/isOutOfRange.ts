@@ -15,10 +15,11 @@ export const isOutOfRange = (
   rowLength: number,
   colLength: number
 ) => {
-  const isUpEndOut = getUpEnd(y, rowLength) < 0;
+  console.log(x, y, 'qwerqwe');
+  const isUpEndOut = y < 0;
   const isDownEndOut = getDownEnd(y, rowLength) > boardState.length - 1;
-  const isLeftEndOut = getLeftEnd(x, colLength) < 0;
+  const isLeftEndOut = x < 0;
   const isRightEndOut = getRightEnd(x, colLength) > boardState.length - 1;
 
-  return isUpEndOut || isDownEndOut || isLeftEndOut || isRightEndOut;
+  return isDownEndOut || isLeftEndOut;
 };

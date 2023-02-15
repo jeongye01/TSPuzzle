@@ -11,12 +11,13 @@ export const isBlockOverlapping = (
   let result = false;
   for (let ox = 0; ox < colLength; ox++) {
     for (let oy = 0; oy < rowLength; oy++) {
-      if (
-        boardState[getUpEnd(y, rowLength) + oy][
-          getLeftEnd(x, colLength) + ox
-        ] &&
-        blockShape[oy][ox]
-      ) {
+      console.log(
+        boardState,
+        boardState[y + oy][x + ox],
+        blockShape[oy][ox],
+        '12432'
+      );
+      if (boardState[y + oy][x + ox] && blockShape[oy][ox]) {
         result = true;
         break;
       }
